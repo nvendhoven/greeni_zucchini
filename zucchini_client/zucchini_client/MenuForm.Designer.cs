@@ -36,15 +36,15 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnl_lobby = new System.Windows.Forms.Panel();
-            this.pnl_room = new System.Windows.Forms.Panel();
-            this.btn_start = new System.Windows.Forms.Button();
-            this.btn_leave = new System.Windows.Forms.Button();
             this.lb_connection = new System.Windows.Forms.Label();
-            this.lv_players = new System.Windows.Forms.ListView();
-            this.lb_room_name = new System.Windows.Forms.Label();
-            this.tb_chat = new System.Windows.Forms.TextBox();
-            this.btn_send = new System.Windows.Forms.Button();
+            this.pnl_room = new System.Windows.Forms.Panel();
             this.rtb_chat = new System.Windows.Forms.RichTextBox();
+            this.btn_send = new System.Windows.Forms.Button();
+            this.tb_chat = new System.Windows.Forms.TextBox();
+            this.lb_room_name = new System.Windows.Forms.Label();
+            this.lv_players = new System.Windows.Forms.ListView();
+            this.btn_leave = new System.Windows.Forms.Button();
+            this.btn_start = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_lobby.SuspendLayout();
             this.pnl_room.SuspendLayout();
@@ -125,6 +125,16 @@
             this.pnl_lobby.Size = new System.Drawing.Size(508, 418);
             this.pnl_lobby.TabIndex = 7;
             // 
+            // lb_connection
+            // 
+            this.lb_connection.AutoSize = true;
+            this.lb_connection.Location = new System.Drawing.Point(164, 130);
+            this.lb_connection.Name = "lb_connection";
+            this.lb_connection.Size = new System.Drawing.Size(170, 17);
+            this.lb_connection.TabIndex = 7;
+            this.lb_connection.Text = "not connected to server...";
+            this.lb_connection.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // pnl_room
             // 
             this.pnl_room.Controls.Add(this.rtb_chat);
@@ -140,42 +150,30 @@
             this.pnl_room.TabIndex = 8;
             this.pnl_room.Visible = false;
             // 
-            // btn_start
+            // rtb_chat
             // 
-            this.btn_start.Enabled = false;
-            this.btn_start.Location = new System.Drawing.Point(358, 332);
-            this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(136, 40);
-            this.btn_start.TabIndex = 0;
-            this.btn_start.Text = "START";
-            this.btn_start.UseVisualStyleBackColor = true;
+            this.rtb_chat.Location = new System.Drawing.Point(6, 50);
+            this.rtb_chat.Name = "rtb_chat";
+            this.rtb_chat.Size = new System.Drawing.Size(346, 322);
+            this.rtb_chat.TabIndex = 6;
+            this.rtb_chat.Text = "";
             // 
-            // btn_leave
+            // btn_send
             // 
-            this.btn_leave.Location = new System.Drawing.Point(358, 6);
-            this.btn_leave.Name = "btn_leave";
-            this.btn_leave.Size = new System.Drawing.Size(136, 40);
-            this.btn_leave.TabIndex = 1;
-            this.btn_leave.Text = "LEAVE";
-            this.btn_leave.UseVisualStyleBackColor = true;
+            this.btn_send.Location = new System.Drawing.Point(358, 375);
+            this.btn_send.Name = "btn_send";
+            this.btn_send.Size = new System.Drawing.Size(136, 40);
+            this.btn_send.TabIndex = 5;
+            this.btn_send.Text = "SEND";
+            this.btn_send.UseVisualStyleBackColor = true;
             // 
-            // lb_connection
+            // tb_chat
             // 
-            this.lb_connection.AutoSize = true;
-            this.lb_connection.Location = new System.Drawing.Point(164, 130);
-            this.lb_connection.Name = "lb_connection";
-            this.lb_connection.Size = new System.Drawing.Size(170, 17);
-            this.lb_connection.TabIndex = 7;
-            this.lb_connection.Text = "not connected to server...";
-            this.lb_connection.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lv_players
-            // 
-            this.lv_players.Location = new System.Drawing.Point(358, 50);
-            this.lv_players.Name = "lv_players";
-            this.lv_players.Size = new System.Drawing.Size(136, 276);
-            this.lv_players.TabIndex = 2;
-            this.lv_players.UseCompatibleStateImageBehavior = false;
+            this.tb_chat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_chat.Location = new System.Drawing.Point(6, 381);
+            this.tb_chat.Name = "tb_chat";
+            this.tb_chat.Size = new System.Drawing.Size(346, 34);
+            this.tb_chat.TabIndex = 4;
             // 
             // lb_room_name
             // 
@@ -187,30 +185,32 @@
             this.lb_room_name.TabIndex = 3;
             this.lb_room_name.Text = "ROOM_NAME";
             // 
-            // tb_chat
+            // lv_players
             // 
-            this.tb_chat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_chat.Location = new System.Drawing.Point(6, 381);
-            this.tb_chat.Name = "tb_chat";
-            this.tb_chat.Size = new System.Drawing.Size(346, 34);
-            this.tb_chat.TabIndex = 4;
+            this.lv_players.Location = new System.Drawing.Point(358, 50);
+            this.lv_players.Name = "lv_players";
+            this.lv_players.Size = new System.Drawing.Size(136, 276);
+            this.lv_players.TabIndex = 2;
+            this.lv_players.UseCompatibleStateImageBehavior = false;
             // 
-            // btn_send
+            // btn_leave
             // 
-            this.btn_send.Location = new System.Drawing.Point(358, 375);
-            this.btn_send.Name = "btn_send";
-            this.btn_send.Size = new System.Drawing.Size(136, 40);
-            this.btn_send.TabIndex = 5;
-            this.btn_send.Text = "SEND";
-            this.btn_send.UseVisualStyleBackColor = true;
+            this.btn_leave.Location = new System.Drawing.Point(358, 6);
+            this.btn_leave.Name = "btn_leave";
+            this.btn_leave.Size = new System.Drawing.Size(136, 40);
+            this.btn_leave.TabIndex = 1;
+            this.btn_leave.Text = "LEAVE";
+            this.btn_leave.UseVisualStyleBackColor = true;
             // 
-            // rtb_chat
+            // btn_start
             // 
-            this.rtb_chat.Location = new System.Drawing.Point(6, 50);
-            this.rtb_chat.Name = "rtb_chat";
-            this.rtb_chat.Size = new System.Drawing.Size(346, 322);
-            this.rtb_chat.TabIndex = 6;
-            this.rtb_chat.Text = "";
+            this.btn_start.Enabled = false;
+            this.btn_start.Location = new System.Drawing.Point(358, 332);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(136, 40);
+            this.btn_start.TabIndex = 0;
+            this.btn_start.Text = "START";
+            this.btn_start.UseVisualStyleBackColor = true;
             // 
             // Lobby
             // 
@@ -224,6 +224,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Lobby";
             this.Text = "Greeni Zucchini";
+            this.Load += new System.EventHandler(this.Lobby_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_lobby.ResumeLayout(false);
             this.pnl_lobby.PerformLayout();

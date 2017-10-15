@@ -53,6 +53,8 @@
     </Compile>
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Room.cs" />
+    <Compile Include="Network\Connection.cs" />
+    <Compile Include="Network\IServerListener.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MenuForm.resx">
@@ -80,8 +82,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Network\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
