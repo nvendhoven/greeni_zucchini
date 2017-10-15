@@ -122,17 +122,16 @@
             this.pnl_lobby.Controls.Add(this.label2);
             this.pnl_lobby.Controls.Add(this.btn_create);
             this.pnl_lobby.Controls.Add(this.tb_create);
-            this.pnl_lobby.Location = new System.Drawing.Point(165, 12);
+            this.pnl_lobby.Location = new System.Drawing.Point(165, 16);
             this.pnl_lobby.Name = "pnl_lobby";
             this.pnl_lobby.Size = new System.Drawing.Size(508, 418);
             this.pnl_lobby.TabIndex = 7;
             // 
             // lb_connection
             // 
-            this.lb_connection.AutoSize = true;
-            this.lb_connection.Location = new System.Drawing.Point(164, 130);
+            this.lb_connection.Location = new System.Drawing.Point(83, 130);
             this.lb_connection.Name = "lb_connection";
-            this.lb_connection.Size = new System.Drawing.Size(170, 17);
+            this.lb_connection.Size = new System.Drawing.Size(329, 23);
             this.lb_connection.TabIndex = 7;
             this.lb_connection.Text = "not connected to server...";
             this.lb_connection.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -146,15 +145,14 @@
             this.pnl_room.Controls.Add(this.lv_players);
             this.pnl_room.Controls.Add(this.btn_leave);
             this.pnl_room.Controls.Add(this.btn_start);
-            this.pnl_room.Location = new System.Drawing.Point(165, 12);
+            this.pnl_room.Location = new System.Drawing.Point(165, 16);
             this.pnl_room.Name = "pnl_room";
             this.pnl_room.Size = new System.Drawing.Size(508, 418);
             this.pnl_room.TabIndex = 8;
-            this.pnl_room.Visible = false;
             // 
             // rtb_chat
             // 
-            this.rtb_chat.Location = new System.Drawing.Point(6, 50);
+            this.rtb_chat.Location = new System.Drawing.Point(6, 46);
             this.rtb_chat.Name = "rtb_chat";
             this.rtb_chat.Size = new System.Drawing.Size(346, 322);
             this.rtb_chat.TabIndex = 6;
@@ -172,7 +170,7 @@
             // tb_chat
             // 
             this.tb_chat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_chat.Location = new System.Drawing.Point(6, 381);
+            this.tb_chat.Location = new System.Drawing.Point(7, 375);
             this.tb_chat.Name = "tb_chat";
             this.tb_chat.Size = new System.Drawing.Size(346, 34);
             this.tb_chat.TabIndex = 4;
@@ -181,7 +179,7 @@
             // 
             this.lb_room_name.AutoSize = true;
             this.lb_room_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_room_name.Location = new System.Drawing.Point(3, 15);
+            this.lb_room_name.Location = new System.Drawing.Point(3, 9);
             this.lb_room_name.Name = "lb_room_name";
             this.lb_room_name.Size = new System.Drawing.Size(127, 20);
             this.lb_room_name.TabIndex = 3;
@@ -189,20 +187,21 @@
             // 
             // lv_players
             // 
-            this.lv_players.Location = new System.Drawing.Point(358, 50);
+            this.lv_players.Location = new System.Drawing.Point(358, 46);
             this.lv_players.Name = "lv_players";
-            this.lv_players.Size = new System.Drawing.Size(136, 276);
+            this.lv_players.Size = new System.Drawing.Size(136, 280);
             this.lv_players.TabIndex = 2;
             this.lv_players.UseCompatibleStateImageBehavior = false;
             // 
             // btn_leave
             // 
-            this.btn_leave.Location = new System.Drawing.Point(358, 6);
+            this.btn_leave.Location = new System.Drawing.Point(358, 0);
             this.btn_leave.Name = "btn_leave";
             this.btn_leave.Size = new System.Drawing.Size(136, 40);
             this.btn_leave.TabIndex = 1;
             this.btn_leave.Text = "LEAVE";
             this.btn_leave.UseVisualStyleBackColor = true;
+            this.btn_leave.Click += new System.EventHandler(this.btn_leave_Click);
             // 
             // btn_start
             // 
@@ -222,6 +221,7 @@
             this.btn_refresh.TabIndex = 7;
             this.btn_refresh.Text = "REFRESH";
             this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
             // Lobby
             // 

@@ -48,6 +48,7 @@
     <Compile Include="Network\Api.cs" />
     <Compile Include="Network\IPlayerListener.cs" />
     <Compile Include="Network\Player.cs" />
+    <Compile Include="Network\Room.cs" />
     <Compile Include="Network\Server.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,21 +11,72 @@ namespace zucchini_server.Network
     class Api
     {
         public void Receive(dynamic load) {
-           Program.Print(PrintType.REC, $"received: \"{load.id}\"");
+           //Program.Print(PrintType.REC, $"received: \"{load.id}\"");
 
             switch ($"{load.id}") {
                 case "player/connect":
-                    Program.Print(PrintType.ACK, $"Player with id: {load.data.uuid} connected");
+                    ChangePlayerData(load.data);
                     break;
                 case "room/create":
-                    Program.Print(PrintType.ACK, $"Room {load.data.name} created");
+                    CreateRoom(load.data);
                     break;
-                case "room/remove/todo":
+                case "room/remove":
+                    break;
+                case "room/refresh":
+                    Refresh(load.data);
                     break;
                 default:
                     Program.Print(PrintType.ERR, $"incorrect load id was given! : \"{load.id}\"");
                     break;
             }
         }
+
+        
+        void ChangePlayerData(dynamic data) {
+            Server.Get().Players.Last().Name = data.name;
+            Server.Get().Players.Last().Uuid = data.uuid;
+            Program.Print(PrintType.ACK, $"player {data.name} connected");
+        }
+
+        void CreateRoom(dynamic data) {
+            foreach (Player p in Server.Get().Players) {
+                if (p.Uuid == $"{data.hostUuid}") {
+                    Server.Get().Rooms.Add(new Room($"{data.roomUuid}", $"{data.name}", p));
+                    Program.Print(PrintType.ACK, $"room {data.name} created with host: {p.Name}");
+                    return;
+                }
+            }
+            Program.Print(PrintType.ERR, $"room not created, Player with id {data.hostUuid} not found");
+        }
+
+        void Refresh(dynamic data) {
+            foreach (Player p in Server.Get().Players)
+            {
+                if (p.Uuid == $"{data.uuid}")
+                {
+                    JArray jrooms = new JArray();
+                    //foreach
+                    //todo Send Rooms In JARRAY
+                    try
+                    {
+                        var send = new JObject{
+                            {"id","room/refresh"},
+                            {"data" , new JObject{
+                                {"rooms", jrooms}
+                            }}
+                        };
+
+                        p.Send("ACK");
+                        Program.Print(PrintType.ACK, $"Refresh request by player: {p.Name}");
+                    }
+                    catch (Exception e) {
+                        Program.Print(PrintType.ERR, e.StackTrace);
+                    }
+                    return;
+                }
+            }
+            Program.Print(PrintType.ERR, $"room not created, Player with id {data.uuid} not found");
+        }
+
     }
 }

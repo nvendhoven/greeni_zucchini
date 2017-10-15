@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using zucchini_server.Network;
@@ -12,27 +13,28 @@ namespace zucchini_server
         static void Main(string[] args)
         {
             Console.WriteLine($"Greeni Zucchini Server\nby: Lois Gussenhoven & Nick van Endhoven\n");
-            new Server();
+            Server.Get();
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void Print(PrintType type, string message) {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
 
             switch (type) {
                 case PrintType.SUCC:
-                    Console.BackgroundColor = ConsoleColor.Green;
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write($"[SUCC]");
+                    Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case PrintType.ACK:
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write($"[ACK]");
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
-                case PrintType.REC:
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    Console.Write($"[REC]");
+                case PrintType.SEND:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"[SEND]");
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case PrintType.ERR:
@@ -57,6 +59,6 @@ namespace zucchini_server
     }
 
     enum PrintType {
-        SUCC, ACK, ERR, DISCON, CONN, REC
+        SUCC, ACK, ERR, DISCON, CONN, SEND
     }
 }

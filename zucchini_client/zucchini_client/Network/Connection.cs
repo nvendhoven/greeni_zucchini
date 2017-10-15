@@ -27,6 +27,7 @@ namespace zucchini_client.Network
                 _stream = _client.GetStream();
 
                 _server.OnConnected();
+                Read();
             }
             catch (Exception e){
                 _server.OnErrorReceived(e.StackTrace);
@@ -49,13 +50,20 @@ namespace zucchini_client.Network
                 catch (Exception e) {
 
                 }
-                //---read back the text---
-                //byte[] bytesToRead = new byte[_client.ReceiveBufferSize];
-                //int bytesRead = nwStream.Read(bytesToRead, 0, _client.ReceiveBufferSize);
-                //Console.WriteLine("Received : " + Encoding.ASCII.GetString(bytesToRead, 0, bytesRead));
-                //Console.ReadLine();
             }).Start();
         }
+
+        public void Read() {
+            new Thread(() => {
+                while (true) {
+                    byte[] bytesToRead = new byte[_client.ReceiveBufferSize];
+                    int bytesRead = _stream.Read(bytesToRead, 0, _client.ReceiveBufferSize);
+
+                    _server.OnDataReceived(Encoding.ASCII.GetString(bytesToRead, 0, bytesRead));
+                }
+            }).Start();
+        }
+
         /*
          *  Function methods
          */

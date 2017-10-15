@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -15,6 +16,9 @@ namespace zucchini_server.Network
         private IPlayerListener _listener;
 
         private bool _connected = true;
+
+        public string Uuid { get; set; }
+        public string Name { get; set; }
 
         public Player(TcpClient client, IPlayerListener listener)
         {
@@ -40,6 +44,20 @@ namespace zucchini_server.Network
                         Disconnect();
                     }
                 }
+            }).Start();
+        }
+
+        public void Send(string json)
+        {
+            new Thread(() =>
+            {
+                if (Server.RUNNING && _connected)
+                {
+                    byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(json.ToString());
+                    _stream.Write(bytesToSend, 0, bytesToSend.Length);
+                    Program.Print(PrintType.SEND, $"sended {json} to {Name}");
+                }
+
             }).Start();
         }
 

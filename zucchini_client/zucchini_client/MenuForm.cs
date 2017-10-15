@@ -26,6 +26,8 @@ namespace zucchini_client
 
         private void Lobby_Load(object sender, EventArgs e)
         {
+            pnl_room.Visible = false;
+
             _api = new ApiCaller(new Connection(this));
             _self = new Player("Directnix");
 
@@ -40,11 +42,26 @@ namespace zucchini_client
         {
             var room = new Room(tb_create.Text, _self);
             _api.CreateRoom(room);
+
+            pnl_lobby.Visible = false;
+            pnl_room.Visible = true;
         }
 
         private void btn_join_Click(object sender, EventArgs e)
         {
             _api.RemoveRoom(new Room("Error", _self));
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            _api.RefreshRooms(_self);
+        }
+
+        private void btn_leave_Click(object sender, EventArgs e)
+        {
+            //todo leave room
+            pnl_room.Visible = false;
+            pnl_lobby.Visible = true;
         }
 
         /*
@@ -56,9 +73,9 @@ namespace zucchini_client
             lb_connection.Invoke(new Action(()=> lb_connection.Text = "Connected to server."));
         }
 
-        public void OnDataReceived()
+        public void OnDataReceived(string data)
         {
-            throw new NotImplementedException();
+            lb_connection.Invoke(new Action(() => lb_connection.Text = "ACK"));
         }
 
         public void OnErrorReceived(string trace)

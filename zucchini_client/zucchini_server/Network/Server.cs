@@ -18,11 +18,21 @@ namespace zucchini_server.Network
         private TcpListener _server;
         public static bool RUNNING = true;
 
-        private List<Player> _players = new List<Player>();
+        public List<Player> Players { get; set; } = new List<Player>();
+        public List<Room> Rooms { get; set; } = new List<Room>();
 
         private Api _api;
 
-        public Server() {
+        private static Server _instance;
+
+        public static Server Get()
+        {
+            if (_instance == null)
+                _instance = new Server();
+            return _instance;
+        }
+
+        private Server() {
             _api = new Api();
 
             _server = new TcpListener(GetLocalIPAddress(), 8080);
@@ -36,7 +46,7 @@ namespace zucchini_server.Network
             new Thread(() => {
                 while (RUNNING)
                 {
-                    _players.Add(new Player(_server.AcceptTcpClient(), this));
+                    Players.Add(new Player(_server.AcceptTcpClient(), this));
                     Program.Print(PrintType.CONN, $"player connected");
                 }
             }).Start();
@@ -65,7 +75,7 @@ namespace zucchini_server.Network
 
         public void OnDisconnect(Player player)
         {
-            _players.Remove(player);
+            Players.Remove(player);
             Program.Print(PrintType.DISCON, $"player disconnected");
         }
 

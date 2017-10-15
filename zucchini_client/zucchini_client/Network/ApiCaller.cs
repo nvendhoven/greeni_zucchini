@@ -47,7 +47,18 @@ namespace zucchini_client.Network
             var data = new JObject{
                 {"id","room/remove"},
                 {"data" , new JObject{
-                    {"Uuid", room.Uuid}
+                    {"uuid", room.Uuid}
+                }}
+            };
+            Connection.Send(data);
+        }
+
+        public void RefreshRooms(Player player)
+        {
+            var data = new JObject{
+                {"id","room/refresh"},
+                {"data" , new JObject{
+                    {"uuid", player.Uuid}
                 }}
             };
             Connection.Send(data);
