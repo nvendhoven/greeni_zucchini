@@ -8,47 +8,47 @@ using zucchini_client.Model;
 
 namespace zucchini_client.Network
 {
-    class API
+    class ApiCaller
     {
         public Connection Connection { get; set; }
 
-        public API(Connection connection)
+        public ApiCaller(Connection connection)
         {
             Connection = connection;
         }
 
         public void ConnectPlayer(Player player)
         {
-            dynamic data = new JObject{
-                {"data","player/connect"},
-                new JObject{
+            var data = new JObject{
+                {"id","player/connect"},
+                {"data" , new JObject{
                     {"uuid", player.Uuid},
                     {"name", player.Name}
-                }
+                }}
             };
             Connection.Send(data);
         }
 
-        public void CreateRoom(Room room, Player hostPlayer)
+        public void CreateRoom(Room room)
         {
-            dynamic data = new JObject{
-                {"data","room/create"},
-                new JObject{
+            var data = new JObject{
+                {"id","room/create"},
+                {"data" , new JObject{
                     {"roomUuid", room.Uuid},
-                    {"hostUuid", hostPlayer.Uuid},
+                    {"hostUuid", room.Host.Uuid },
                     {"name", room.Name}
-                }
+                }}
             };
             Connection.Send(data);
         }
 
         public void RemoveRoom(Room room)
         {
-            dynamic data = new JObject{
-                {"data","room/remove"},
-                new JObject{
+            var data = new JObject{
+                {"id","room/remove"},
+                {"data" , new JObject{
                     {"Uuid", room.Uuid}
-                }
+                }}
             };
             Connection.Send(data);
         }

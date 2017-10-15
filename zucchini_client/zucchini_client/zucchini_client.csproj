@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Room.cs" />
+    <Compile Include="Network\ApiCaller.cs" />
     <Compile Include="Network\Connection.cs" />
     <Compile Include="Network\IServerListener.cs" />
     <Compile Include="Program.cs" />

@@ -14,8 +14,10 @@ namespace zucchini_client
 {
     public partial class Lobby : Form , IServerListener
     {
-        private API _api;
+        private ApiCaller _api;
         private Player _self;
+
+        private List<Room> _rooms = new List<Room>();
 
         public Lobby()
         {
@@ -24,7 +26,7 @@ namespace zucchini_client
 
         private void Lobby_Load(object sender, EventArgs e)
         {
-            _api = new API(new Connection(this));
+            _api = new ApiCaller(new Connection(this));
             _self = new Player("Directnix");
 
             _api.ConnectPlayer(_self);
@@ -36,7 +38,8 @@ namespace zucchini_client
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            _api.CreateRoom("Eyo listen upp!!", "");
+            var room = new Room(tb_create.Text, _self);
+            _api.CreateRoom(room);
         }
 
         /*

@@ -60,12 +60,12 @@ namespace zucchini_server.Network
         public void OnDisconnect(Player player)
         {
             _players.Remove(player);
-            Console.WriteLine($"-Player Disconnected-");
+            Console.WriteLine($"- Player Disconnected -");
         }
 
         public void OnReceiveData(string data)
         {
-            Console.WriteLine($"-Received: {data}-");
+            Console.WriteLine($"- Received: {data}-");
         }
     }
 }

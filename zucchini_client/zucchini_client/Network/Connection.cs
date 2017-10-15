@@ -39,10 +39,16 @@ namespace zucchini_client.Network
     
         public void Send(JObject json)
         {
-            new Thread(() => {  
-                byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(json.ToString());
-                _stream.Write(bytesToSend, 0, bytesToSend.Length);
+            new Thread(() => {
 
+                try
+                {
+                    byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(json.ToString());
+                    _stream.Write(bytesToSend, 0, bytesToSend.Length);
+                }
+                catch (Exception e) {
+
+                }
                 //---read back the text---
                 //byte[] bytesToRead = new byte[_client.ReceiveBufferSize];
                 //int bytesRead = nwStream.Read(bytesToRead, 0, _client.ReceiveBufferSize);
