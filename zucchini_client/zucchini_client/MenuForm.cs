@@ -42,6 +42,11 @@ namespace zucchini_client
             _api.CreateRoom(room);
         }
 
+        private void btn_join_Click(object sender, EventArgs e)
+        {
+            _api.RemoveRoom(new Room("Error", _self));
+        }
+
         /*
          *  Network Listeners 
          */

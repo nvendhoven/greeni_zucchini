@@ -11,18 +11,19 @@ namespace zucchini_server.Network
     class Api
     {
         public void Receive(dynamic load) {
-            Console.WriteLine($"- received: \"{load.id}\" -");
+           Program.Print(PrintType.REC, $"received: \"{load.id}\"");
 
             switch ($"{load.id}") {
                 case "player/connect":
-                    Console.WriteLine($"- Player with id: {load.data.uuid} connected-");
+                    Program.Print(PrintType.ACK, $"Player with id: {load.data.uuid} connected");
                     break;
                 case "room/create":
-                    Console.WriteLine($"- Room {load.data.name} created-");
+                    Program.Print(PrintType.ACK, $"Room {load.data.name} created");
                     break;
-                case "room/remove":
+                case "room/remove/todo":
                     break;
-                default: Console.WriteLine($"-! incorrect load id !-");
+                default:
+                    Program.Print(PrintType.ERR, $"incorrect load id was given! : \"{load.id}\"");
                     break;
             }
         }

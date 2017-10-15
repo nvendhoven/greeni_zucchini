@@ -59,6 +59,7 @@
             this.btn_join.TabIndex = 0;
             this.btn_join.Text = "JOIN";
             this.btn_join.UseVisualStyleBackColor = true;
+            this.btn_join.Click += new System.EventHandler(this.btn_join_Click);
             // 
             // lv_rooms
             // 

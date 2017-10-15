@@ -28,7 +28,7 @@ namespace zucchini_server.Network
             _server = new TcpListener(GetLocalIPAddress(), 8080);
             _server.Start();
 
-            Console.WriteLine($"-- Server started on ip: {GetLocalIPAddress().ToString()} --");
+            Program.Print(PrintType.SUCC, $" Server started on ip: {GetLocalIPAddress().ToString()}");
             ReceivePlayers();
         }
 
@@ -37,7 +37,7 @@ namespace zucchini_server.Network
                 while (RUNNING)
                 {
                     _players.Add(new Player(_server.AcceptTcpClient(), this));
-                    Console.WriteLine($"- player connected -");
+                    Program.Print(PrintType.CONN, $"player connected");
                 }
             }).Start();
         }
@@ -66,7 +66,7 @@ namespace zucchini_server.Network
         public void OnDisconnect(Player player)
         {
             _players.Remove(player);
-            Console.WriteLine($"- player disconnected -");
+            Program.Print(PrintType.DISCON, $"player disconnected");
         }
 
         public void OnReceiveData(string data)
