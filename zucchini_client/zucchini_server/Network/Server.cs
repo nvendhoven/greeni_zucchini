@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 
 namespace zucchini_server.Network
 {
-    class Server
+    class Server : IPlayerListener
     {
-        //todo add list of rooms and players
+        //todo add list of rooms
 
-        TcpListener server;
-        bool running = true;
+        private TcpListener _server;
+        public static bool RUNNING = true;
+
+        private List<Player> _players = new List<Player>();
 
         public Server() {
-            server = new TcpListener(GetLocalIPAddress(), 8080);
-            server.Start();
+            _server = new TcpListener(GetLocalIPAddress(), 8080);
+            _server.Start();
 
             Console.WriteLine($"-- Server started on ip: {GetLocalIPAddress().ToString()} --");
             ReceivePlayers();
@@ -26,9 +28,9 @@ namespace zucchini_server.Network
 
         private void ReceivePlayers() {
             new Thread(() => {
-                while (running)
+                while (RUNNING)
                 {
-                    server.AcceptSocket();
+                    _players.Add(new Player(_server.AcceptTcpClient(), this));
                     Console.WriteLine($"- Player Connected! -");
                 }
             }).Start();
@@ -49,6 +51,21 @@ namespace zucchini_server.Network
                 }
             }
             throw new Exception("Local IP Address Not Found!");
+        }
+
+        /*
+         *  Listener methods
+         */
+
+        public void OnDisconnect(Player player)
+        {
+            _players.Remove(player);
+            Console.WriteLine($"-Player Disconnected-");
+        }
+
+        public void OnReceiveData(string data)
+        {
+            Console.WriteLine($"-Received: {data}-");
         }
     }
 }

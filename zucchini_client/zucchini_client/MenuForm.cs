@@ -31,7 +31,7 @@ namespace zucchini_client
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-
+            _connection.Send("Eyo listen upp!!");
         }
 
         /*
