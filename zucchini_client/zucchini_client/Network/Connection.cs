@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -34,16 +36,11 @@ namespace zucchini_client.Network
         /*
         *  Server methods
         */
-
-        public void CreateRoom()
-        {
-
-        }
-
-        public void Send(string message)
+    
+        public void Send(JObject json)
         {
             new Thread(() => {  
-                byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(message);
+                byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(json.ToString());
                 _stream.Write(bytesToSend, 0, bytesToSend.Length);
 
                 //---read back the text---

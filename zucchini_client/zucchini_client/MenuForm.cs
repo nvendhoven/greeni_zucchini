@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using zucchini_client.Model;
 using zucchini_client.Network;
 
 namespace zucchini_client
 {
     public partial class Lobby : Form , IServerListener
     {
-        private Connection _connection;
+        private API _api;
+        private Player _self;
 
         public Lobby()
         {
@@ -22,7 +24,10 @@ namespace zucchini_client
 
         private void Lobby_Load(object sender, EventArgs e)
         {
-            _connection = new Connection(this);
+            _api = new API(new Connection(this));
+            _self = new Player("Directnix");
+
+            _api.ConnectPlayer(_self);
         }
 
         /*
@@ -31,7 +36,7 @@ namespace zucchini_client
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            _connection.Send("Eyo listen upp!!");
+            _api.CreateRoom("Eyo listen upp!!", "");
         }
 
         /*
