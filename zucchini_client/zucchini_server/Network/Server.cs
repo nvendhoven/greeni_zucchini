@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -18,7 +20,11 @@ namespace zucchini_server.Network
 
         private List<Player> _players = new List<Player>();
 
+        private Api _api;
+
         public Server() {
+            _api = new Api();
+
             _server = new TcpListener(GetLocalIPAddress(), 8080);
             _server.Start();
 
@@ -31,7 +37,7 @@ namespace zucchini_server.Network
                 while (RUNNING)
                 {
                     _players.Add(new Player(_server.AcceptTcpClient(), this));
-                    Console.WriteLine($"- Player Connected! -");
+                    Console.WriteLine($"- player connected -");
                 }
             }).Start();
         }
@@ -60,12 +66,12 @@ namespace zucchini_server.Network
         public void OnDisconnect(Player player)
         {
             _players.Remove(player);
-            Console.WriteLine($"- Player Disconnected -");
+            Console.WriteLine($"- player disconnected -");
         }
 
         public void OnReceiveData(string data)
         {
-            Console.WriteLine($"- Received: {data}-");
+            _api.Receive(JObject.Parse(data));
         }
     }
 }

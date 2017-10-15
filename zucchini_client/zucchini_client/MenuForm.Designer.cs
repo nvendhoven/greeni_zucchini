@@ -45,6 +45,7 @@
             this.lv_players = new System.Windows.Forms.ListView();
             this.btn_leave = new System.Windows.Forms.Button();
             this.btn_start = new System.Windows.Forms.Button();
+            this.btn_refresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_lobby.SuspendLayout();
             this.pnl_room.SuspendLayout();
@@ -61,9 +62,9 @@
             // 
             // lv_rooms
             // 
-            this.lv_rooms.Location = new System.Drawing.Point(12, 12);
+            this.lv_rooms.Location = new System.Drawing.Point(12, 62);
             this.lv_rooms.Name = "lv_rooms";
-            this.lv_rooms.Size = new System.Drawing.Size(147, 372);
+            this.lv_rooms.Size = new System.Drawing.Size(147, 322);
             this.lv_rooms.TabIndex = 1;
             this.lv_rooms.UseCompatibleStateImageBehavior = false;
             // 
@@ -212,11 +213,21 @@
             this.btn_start.Text = "START";
             this.btn_start.UseVisualStyleBackColor = true;
             // 
+            // btn_refresh
+            // 
+            this.btn_refresh.Location = new System.Drawing.Point(12, 16);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(147, 40);
+            this.btn_refresh.TabIndex = 7;
+            this.btn_refresh.Text = "REFRESH";
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            // 
             // Lobby
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 442);
+            this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.pnl_room);
             this.Controls.Add(this.pnl_lobby);
             this.Controls.Add(this.lv_rooms);
@@ -253,6 +264,7 @@
         private System.Windows.Forms.Button btn_send;
         private System.Windows.Forms.TextBox tb_chat;
         private System.Windows.Forms.RichTextBox rtb_chat;
+        private System.Windows.Forms.Button btn_refresh;
     }
 }
 
