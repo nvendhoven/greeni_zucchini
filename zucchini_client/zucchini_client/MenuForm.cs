@@ -73,7 +73,6 @@ namespace zucchini_client
             }
         }
 
-
         private void GotoRoom(Room room) {
             _inRoom = true;
             this.Invoke(new MethodInvoker(() => {
@@ -156,9 +155,11 @@ namespace zucchini_client
                     _playersInRoom.Clear();
                     foreach (dynamic player in load.data.players)
                     {
-                        _playersInRoom.Add(new Player($"{player.name}", $"{player.uuid}")); //todo is host!
+                        _playersInRoom.Add(new Player($"{player.name}", $"{player.uuid}")); //todo is host! Also update on other join and leave
                     }
                     UpdatePlayerList();
+                    break;
+                case "room/chat":
                     break;
             }
         }

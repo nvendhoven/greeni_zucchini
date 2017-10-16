@@ -21,7 +21,7 @@ namespace zucchini_server.Network
                     CreateRoom(load.data);
                     break;
                 case "room/remove":
-
+                    // TODO : Remove room
                     break;
                 case "room/refresh":
                     Refresh(load.data);
@@ -30,13 +30,13 @@ namespace zucchini_server.Network
                     JoinRoom(load.data);
                     break;
                 case "room/leave":
-
+                    // TODO : player leave room ALSO on player disconnect
                     break;
                 case "room/players":
                     PlayersInRoom(load.data);
                     break;
                 case "room/message":
-
+                    // TODO : send message to room
                     break;
                 default:
                     Program.Print(PrintType.ERR, $"incorrect load id was given! : \"{load.id}\"");
