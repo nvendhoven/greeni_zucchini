@@ -9,7 +9,7 @@ namespace zucchini_client.Network
     interface IServerListener
     {
         void OnConnected();
-        void OnDataReceived(string data);
+        void OnDataReceived(dynamic load);
         void OnErrorReceived(string trace);
     }
 }

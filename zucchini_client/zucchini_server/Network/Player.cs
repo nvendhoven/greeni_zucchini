@@ -47,7 +47,7 @@ namespace zucchini_server.Network
             }).Start();
         }
 
-        public void Send(string json)
+        public void Send(JObject json)
         {
             new Thread(() =>
             {
@@ -55,7 +55,7 @@ namespace zucchini_server.Network
                 {
                     byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(json.ToString());
                     _stream.Write(bytesToSend, 0, bytesToSend.Length);
-                    Program.Print(PrintType.SEND, $"sended {json} to {Name}");
+                    Program.Print(PrintType.SEND, $"sended {json.ToString()} to {Name}");
                 }
 
             }).Start();

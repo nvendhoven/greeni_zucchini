@@ -13,6 +13,12 @@ namespace zucchini_client.Model
         public Player Host { get; set; }
         public List<Player> Players { get; set; }
 
+        public Room(string name, string uuid)
+        {
+            Uuid = uuid;
+            Name = name;
+        }
+
         public Room(string name, Player host)
         {
             Uuid = Guid.NewGuid().ToString();

@@ -54,9 +54,16 @@ namespace zucchini_server.Network
             {
                 if (p.Uuid == $"{data.uuid}")
                 {
-                    JArray jrooms = new JArray();
-                    //foreach
-                    //todo Send Rooms In JARRAY
+
+                    var jrooms = new JArray();
+                    foreach (Room r in Server.Get().Rooms)
+                    {
+                        jrooms.Add(new JObject {
+                            {"name", r.Name},
+                            {"uuid", r.Uuid}
+                        });
+                    }
+
                     try
                     {
                         var send = new JObject{
@@ -66,7 +73,7 @@ namespace zucchini_server.Network
                             }}
                         };
 
-                        p.Send("ACK");
+                        p.Send(send);
                         Program.Print(PrintType.ACK, $"Refresh request by player: {p.Name}");
                     }
                     catch (Exception e) {

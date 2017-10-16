@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,20 @@ namespace zucchini_client
             _self = new Player("Directnix");
 
             _api.ConnectPlayer(_self);
+
+            lb_rooms.DisplayMember = "Name";
+            lb_rooms.ValueMember = "Uuid";
+        }
+
+        /*
+         *  Update UI 
+         */
+
+        private void UpdateRoomList() {
+            lb_rooms.Invoke(new Action(() => lb_rooms.Items.Clear()));
+            foreach (Room r in _rooms) {
+                lb_rooms.Invoke(new Action(() => lb_rooms.Items.Add(new ListBoxItem { Name = r.Name, Uuid = r.Uuid })));
+            }  
         }
 
         /*
@@ -73,14 +88,28 @@ namespace zucchini_client
             lb_connection.Invoke(new Action(()=> lb_connection.Text = "Connected to server."));
         }
 
-        public void OnDataReceived(string data)
+        public void OnDataReceived(dynamic load)
         {
-            lb_connection.Invoke(new Action(() => lb_connection.Text = "ACK"));
+            switch ($"{load.id}") {
+                case "room/refresh":
+                    _rooms.Clear();
+                    foreach (dynamic room in load.data.rooms) {
+                        _rooms.Add(new Room($"{room.name}",$"{room.uuid}"));
+                    }
+                    UpdateRoomList();
+                    break;
+            }
         }
 
         public void OnErrorReceived(string trace)
         {
             lb_connection.Invoke(new Action(() => lb_connection.Text = "Cannot connect to server."));
         }
+    }
+
+    class ListBoxItem
+    {
+        public string Name { get; set; }
+        public string Uuid { get; set; }
     }
 }

@@ -59,7 +59,7 @@ namespace zucchini_client.Network
                     byte[] bytesToRead = new byte[_client.ReceiveBufferSize];
                     int bytesRead = _stream.Read(bytesToRead, 0, _client.ReceiveBufferSize);
 
-                    _server.OnDataReceived(Encoding.ASCII.GetString(bytesToRead, 0, bytesRead));
+                    _server.OnDataReceived(JObject.Parse(Encoding.ASCII.GetString(bytesToRead, 0, bytesRead)));
                 }
             }).Start();
         }
