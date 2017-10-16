@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using zucchini_client.Model;
@@ -21,6 +22,9 @@ namespace zucchini_client
 
         private List<Room> _rooms = new List<Room>();
 
+        private bool _inRoom = false;
+        private List<Player> _playersInRoom = new List<Player>();
+
         public Lobby()
         {
             InitializeComponent();
@@ -33,11 +37,17 @@ namespace zucchini_client
             _api = new ApiCaller(new Connection(this));
             _self = new Player("Directnix");
 
-            _api.ConnectPlayer(_self);
-            _api.RefreshRooms(_self);
+            new Thread(() => {
+                _api.ConnectPlayer(_self);
+                Thread.Sleep(100);
+                _api.RefreshRooms(_self);
+            }).Start();
 
             lb_rooms.DisplayMember = "Name";
             lb_rooms.ValueMember = "Uuid";
+
+            lb_players.DisplayMember = "Name";
+            lb_players.ValueMember = "Uuid";
         }
 
         /*
@@ -51,13 +61,31 @@ namespace zucchini_client
             }  
         }
 
+        private void UpdatePlayerList()
+        {
+            if (!_inRoom)
+                return;
+
+            lb_players.Invoke(new Action(() => lb_players.Items.Clear()));
+            foreach (Player p in _playersInRoom)
+            {
+                lb_players.Invoke(new Action(() => lb_players.Items.Add(new ListBoxItem { Name = p.Name, Uuid = p.Uuid })));
+            }
+        }
+
+
         private void GotoRoom(Room room) {
+            _inRoom = true;
             this.Invoke(new MethodInvoker(() => {
                 pnl_room.Visible = true;
                 pnl_lobby.Visible = false;
 
                 lb_room_name.Text = room.Name;
             }));
+
+            new Thread(() => {
+                _api.FetchPlayersInRoom(room.Uuid, _self);
+            }).Start();
         }
 
         /*
@@ -68,6 +96,7 @@ namespace zucchini_client
         {
             var room = new Room(tb_create.Text, _self);
             _api.CreateRoom(room);
+            _api.RefreshRooms(_self);
             GotoRoom(room);
         }
 
@@ -98,9 +127,10 @@ namespace zucchini_client
 
         private void btn_leave_Click(object sender, EventArgs e)
         {
-            //todo leave room
+            //todo leave room serversided
             pnl_room.Visible = false;
             pnl_lobby.Visible = true;
+            _inRoom = false;
         }
 
         /*
@@ -121,6 +151,14 @@ namespace zucchini_client
                         _rooms.Add(new Room($"{room.name}",$"{room.uuid}"));
                     }
                     UpdateRoomList();
+                    break;
+                case "room/players":
+                    _playersInRoom.Clear();
+                    foreach (dynamic player in load.data.players)
+                    {
+                        _playersInRoom.Add(new Player($"{player.name}", $"{player.uuid}")); //todo is host!
+                    }
+                    UpdatePlayerList();
                     break;
             }
         }

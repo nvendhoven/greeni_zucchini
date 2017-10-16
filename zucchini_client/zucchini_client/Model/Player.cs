@@ -21,7 +21,7 @@ namespace zucchini_client.Model
             Name = name;
         }
 
-        public Player(string uuid, string name)
+        public Player(string name, string uuid)
         {
             Uuid = uuid;
             Name = name;

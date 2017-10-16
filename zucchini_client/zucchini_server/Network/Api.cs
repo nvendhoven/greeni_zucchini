@@ -33,7 +33,7 @@ namespace zucchini_server.Network
 
                     break;
                 case "room/players":
-
+                    PlayersInRoom(load.data);
                     break;
                 case "room/message":
 
@@ -62,7 +62,52 @@ namespace zucchini_server.Network
             Program.Print(PrintType.ERR, $"room not created, Player with id {data.hostUuid} not found");
         }
 
-        void JoinRoom(dynamic data) {
+        void PlayersInRoom(dynamic data)
+        {
+            Program.Print(PrintType.ACK, $"players request by player: {data.playerUuid}");
+
+            foreach (Player p in Server.Get().Players)
+            {
+                if (p.Uuid == $"{data.playerUuid}")
+                {
+                    foreach (Room r in Server.Get().Rooms)
+                    {
+                        if (r.Uuid == $"{data.roomUuid}")
+                        {
+                            var jplayers = new JArray();
+                            foreach (Player p2 in r.Players)
+                            {
+                                jplayers.Add(new JObject {
+                                    {"name", p2.Name},
+                                    {"uuid", p2.Uuid},
+                                    {"isHost", p2.Host}
+                                });
+                            }
+
+                            try
+                            {
+                                var send = new JObject{
+                                    {"id","room/players"},
+                                    {"data" , new JObject{
+                                        {"players", jplayers}
+                                    }}
+                                };
+
+                                p.Send(send);
+                            }
+                            catch (Exception e)
+                            {
+                                Program.Print(PrintType.ERR, e.StackTrace);
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+            Program.Print(PrintType.ERR, $"room with id {data.roomUuid} not found! Or player with id {data.playerUuid} not found!");
+        }
+
+        void JoinRoom(dynamic data) { //todo, check if host
             foreach (Room r in Server.Get().Rooms)
             {
                 if (r.Uuid == $"{data.roomUuid}")
@@ -80,8 +125,6 @@ namespace zucchini_server.Network
             }
 
             Program.Print(PrintType.ERR, $"joining room failed! Room or Player does not excist!");
-
-            //todo send people in room
         }
 
         void Refresh(dynamic data) {
@@ -117,7 +160,7 @@ namespace zucchini_server.Network
                     return;
                 }
             }
-            Program.Print(PrintType.ERR, $"room not created, Player with id {data.uuid} not found");
+            Program.Print(PrintType.ERR, $"failed to refresh to player with id {data.uuid} not found");
         }
 
     }

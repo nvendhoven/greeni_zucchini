@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -55,7 +56,8 @@ namespace zucchini_client.Network
 
         public void Read() {
             new Thread(() => {
-                while (true) {
+                while (true)
+                {
                     byte[] bytesToRead = new byte[_client.ReceiveBufferSize];
                     int bytesRead = _stream.Read(bytesToRead, 0, _client.ReceiveBufferSize);
 

@@ -19,12 +19,15 @@ namespace zucchini_server.Network
 
         public string Uuid { get; set; }
         public string Name { get; set; }
+        public bool Host { get; set; }
 
         public Player(TcpClient client, IPlayerListener listener)
         {
             _client = client;
             _listener = listener;
             _stream = _client.GetStream();
+
+            Host = false;
             Read();
         }
 

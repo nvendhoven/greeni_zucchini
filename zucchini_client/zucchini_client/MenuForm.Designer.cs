@@ -41,11 +41,11 @@
             this.btn_send = new System.Windows.Forms.Button();
             this.tb_chat = new System.Windows.Forms.TextBox();
             this.lb_room_name = new System.Windows.Forms.Label();
-            this.lv_players = new System.Windows.Forms.ListView();
             this.btn_leave = new System.Windows.Forms.Button();
             this.btn_start = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.lb_rooms = new System.Windows.Forms.ListBox();
+            this.lb_players = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_lobby.SuspendLayout();
             this.pnl_room.SuspendLayout();
@@ -54,7 +54,7 @@
             // btn_join
             // 
             this.btn_join.Location = new System.Drawing.Point(9, 317);
-            this.btn_join.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_join.Margin = new System.Windows.Forms.Padding(2);
             this.btn_join.Name = "btn_join";
             this.btn_join.Size = new System.Drawing.Size(110, 32);
             this.btn_join.TabIndex = 0;
@@ -65,7 +65,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(62, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(247, 91);
             this.pictureBox1.TabIndex = 2;
@@ -74,7 +74,7 @@
             // btn_create
             // 
             this.btn_create.Location = new System.Drawing.Point(152, 242);
-            this.btn_create.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_create.Margin = new System.Windows.Forms.Padding(2);
             this.btn_create.Name = "btn_create";
             this.btn_create.Size = new System.Drawing.Size(70, 24);
             this.btn_create.TabIndex = 3;
@@ -97,7 +97,7 @@
             // 
             this.tb_create.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_create.Location = new System.Drawing.Point(130, 215);
-            this.tb_create.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_create.Margin = new System.Windows.Forms.Padding(2);
             this.tb_create.Name = "tb_create";
             this.tb_create.Size = new System.Drawing.Size(115, 23);
             this.tb_create.TabIndex = 5;
@@ -121,7 +121,7 @@
             this.pnl_lobby.Controls.Add(this.btn_create);
             this.pnl_lobby.Controls.Add(this.tb_create);
             this.pnl_lobby.Location = new System.Drawing.Point(124, 13);
-            this.pnl_lobby.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_lobby.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_lobby.Name = "pnl_lobby";
             this.pnl_lobby.Size = new System.Drawing.Size(381, 340);
             this.pnl_lobby.TabIndex = 7;
@@ -138,15 +138,15 @@
             // 
             // pnl_room
             // 
+            this.pnl_room.Controls.Add(this.lb_players);
             this.pnl_room.Controls.Add(this.rtb_chat);
             this.pnl_room.Controls.Add(this.btn_send);
             this.pnl_room.Controls.Add(this.tb_chat);
             this.pnl_room.Controls.Add(this.lb_room_name);
-            this.pnl_room.Controls.Add(this.lv_players);
             this.pnl_room.Controls.Add(this.btn_leave);
             this.pnl_room.Controls.Add(this.btn_start);
             this.pnl_room.Location = new System.Drawing.Point(124, 13);
-            this.pnl_room.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_room.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_room.Name = "pnl_room";
             this.pnl_room.Size = new System.Drawing.Size(381, 340);
             this.pnl_room.TabIndex = 8;
@@ -154,7 +154,7 @@
             // rtb_chat
             // 
             this.rtb_chat.Location = new System.Drawing.Point(4, 37);
-            this.rtb_chat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtb_chat.Margin = new System.Windows.Forms.Padding(2);
             this.rtb_chat.Name = "rtb_chat";
             this.rtb_chat.Size = new System.Drawing.Size(260, 262);
             this.rtb_chat.TabIndex = 6;
@@ -163,7 +163,7 @@
             // btn_send
             // 
             this.btn_send.Location = new System.Drawing.Point(268, 305);
-            this.btn_send.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_send.Margin = new System.Windows.Forms.Padding(2);
             this.btn_send.Name = "btn_send";
             this.btn_send.Size = new System.Drawing.Size(102, 32);
             this.btn_send.TabIndex = 5;
@@ -174,7 +174,7 @@
             // 
             this.tb_chat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_chat.Location = new System.Drawing.Point(5, 305);
-            this.tb_chat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_chat.Margin = new System.Windows.Forms.Padding(2);
             this.tb_chat.Name = "tb_chat";
             this.tb_chat.Size = new System.Drawing.Size(260, 28);
             this.tb_chat.TabIndex = 4;
@@ -190,19 +190,10 @@
             this.lb_room_name.TabIndex = 3;
             this.lb_room_name.Text = "ROOM_NAME";
             // 
-            // lv_players
-            // 
-            this.lv_players.Location = new System.Drawing.Point(268, 37);
-            this.lv_players.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lv_players.Name = "lv_players";
-            this.lv_players.Size = new System.Drawing.Size(103, 228);
-            this.lv_players.TabIndex = 2;
-            this.lv_players.UseCompatibleStateImageBehavior = false;
-            // 
             // btn_leave
             // 
             this.btn_leave.Location = new System.Drawing.Point(268, 0);
-            this.btn_leave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_leave.Margin = new System.Windows.Forms.Padding(2);
             this.btn_leave.Name = "btn_leave";
             this.btn_leave.Size = new System.Drawing.Size(102, 32);
             this.btn_leave.TabIndex = 1;
@@ -214,7 +205,7 @@
             // 
             this.btn_start.Enabled = false;
             this.btn_start.Location = new System.Drawing.Point(268, 270);
-            this.btn_start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_start.Margin = new System.Windows.Forms.Padding(2);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(102, 32);
             this.btn_start.TabIndex = 0;
@@ -224,7 +215,7 @@
             // btn_refresh
             // 
             this.btn_refresh.Location = new System.Drawing.Point(9, 13);
-            this.btn_refresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_refresh.Margin = new System.Windows.Forms.Padding(2);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(110, 32);
             this.btn_refresh.TabIndex = 7;
@@ -240,6 +231,14 @@
             this.lb_rooms.Size = new System.Drawing.Size(110, 264);
             this.lb_rooms.TabIndex = 9;
             // 
+            // lb_players
+            // 
+            this.lb_players.FormattingEnabled = true;
+            this.lb_players.Location = new System.Drawing.Point(268, 37);
+            this.lb_players.Name = "lb_players";
+            this.lb_players.Size = new System.Drawing.Size(102, 225);
+            this.lb_players.TabIndex = 7;
+            // 
             // Lobby
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,7 +250,7 @@
             this.Controls.Add(this.pnl_lobby);
             this.Controls.Add(this.btn_join);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Lobby";
             this.Text = "Greeni Zucchini";
             this.Load += new System.EventHandler(this.Lobby_Load);
@@ -275,7 +274,6 @@
         private System.Windows.Forms.Panel pnl_lobby;
         private System.Windows.Forms.Panel pnl_room;
         private System.Windows.Forms.Label lb_connection;
-        private System.Windows.Forms.ListView lv_players;
         private System.Windows.Forms.Button btn_leave;
         private System.Windows.Forms.Button btn_start;
         private System.Windows.Forms.Label lb_room_name;
@@ -284,6 +282,7 @@
         private System.Windows.Forms.RichTextBox rtb_chat;
         private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.ListBox lb_rooms;
+        private System.Windows.Forms.ListBox lb_players;
     }
 }
 
