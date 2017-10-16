@@ -21,9 +21,22 @@ namespace zucchini_server.Network
                     CreateRoom(load.data);
                     break;
                 case "room/remove":
+
                     break;
                 case "room/refresh":
                     Refresh(load.data);
+                    break;
+                case "room/join":
+                    JoinRoom(load.data);
+                    break;
+                case "room/leave":
+
+                    break;
+                case "room/players":
+
+                    break;
+                case "room/message":
+
                     break;
                 default:
                     Program.Print(PrintType.ERR, $"incorrect load id was given! : \"{load.id}\"");
@@ -47,6 +60,28 @@ namespace zucchini_server.Network
                 }
             }
             Program.Print(PrintType.ERR, $"room not created, Player with id {data.hostUuid} not found");
+        }
+
+        void JoinRoom(dynamic data) {
+            foreach (Room r in Server.Get().Rooms)
+            {
+                if (r.Uuid == $"{data.roomUuid}")
+                {
+                    foreach (Player p in Server.Get().Players)
+                    {
+                        if (p.Uuid == $"{data.playerUuid}")
+                        {
+                            r.Players.Add(p);
+                            Program.Print(PrintType.ACK, $"{p.Name} joined room {r.Name}");
+                            return;
+                        }
+                    }
+                }
+            }
+
+            Program.Print(PrintType.ERR, $"joining room failed! Room or Player does not excist!");
+
+            //todo send people in room
         }
 
         void Refresh(dynamic data) {

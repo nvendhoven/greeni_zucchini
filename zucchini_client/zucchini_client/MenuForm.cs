@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,7 @@ namespace zucchini_client
             _self = new Player("Directnix");
 
             _api.ConnectPlayer(_self);
+            _api.RefreshRooms(_self);
 
             lb_rooms.DisplayMember = "Name";
             lb_rooms.ValueMember = "Uuid";
@@ -49,6 +51,15 @@ namespace zucchini_client
             }  
         }
 
+        private void GotoRoom(Room room) {
+            this.Invoke(new MethodInvoker(() => {
+                pnl_room.Visible = true;
+                pnl_lobby.Visible = false;
+
+                lb_room_name.Text = room.Name;
+            }));
+        }
+
         /*
          *  Button Delegates 
          */
@@ -57,14 +68,27 @@ namespace zucchini_client
         {
             var room = new Room(tb_create.Text, _self);
             _api.CreateRoom(room);
-
-            pnl_lobby.Visible = false;
-            pnl_room.Visible = true;
+            GotoRoom(room);
         }
 
         private void btn_join_Click(object sender, EventArgs e)
         {
-            _api.RemoveRoom(new Room("Error", _self));
+            try
+            {
+                if (lb_rooms.SelectedIndex >= 0 && lb_rooms.SelectedIndex < _rooms.Count)
+                {
+                    _api.JoinRoom(((ListBoxItem)lb_rooms.SelectedItem).Uuid, _self);
+
+                    foreach(Room r in _rooms) {
+                        if (((ListBoxItem)lb_rooms.SelectedItem).Uuid == r.Uuid) {
+                            GotoRoom(r);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) {
+                Debug.WriteLine(ex.StackTrace);
+            }
         }
 
         private void btn_refresh_Click(object sender, EventArgs e)
