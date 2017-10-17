@@ -19,12 +19,12 @@ namespace zucchini_client.Network
         private TcpClient _client;
         private NetworkStream _stream;
 
-        public Connection(IServerListener server) {
+        public Connection(IPAddress ip, IServerListener server) {
             _server = server;
             try
             {
                 _client = new TcpClient();
-                _client.Connect(GetLocalIPAddress(), 8080);
+                _client.Connect(ip, 8080);
                 _stream = _client.GetStream();
 
                 _server.OnConnected();
@@ -49,7 +49,7 @@ namespace zucchini_client.Network
                     _stream.Write(bytesToSend, 0, bytesToSend.Length);
                 }
                 catch (Exception e) {
-
+                    Debug.WriteLine(e.StackTrace);
                 }
             }).Start();
         }
@@ -65,22 +65,6 @@ namespace zucchini_client.Network
                 }
             }).Start();
         }
-
-        /*
-         *  Function methods
-         */
-
-        private IPAddress GetLocalIPAddress()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip;
-                }
-            }
-            throw new Exception("Local IP Address Not Found!");
-        }
+       
     }
 }

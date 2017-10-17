@@ -13,12 +13,9 @@ namespace zucchini_client.Model
         public string Name { get; set; }
         public bool Host { get; set; } = false;
 
-        private bool _self = false;
-
         public Player(string name)
         {
             Uuid = Guid.NewGuid().ToString();
-            _self = true;
             Name = name;
         }
 

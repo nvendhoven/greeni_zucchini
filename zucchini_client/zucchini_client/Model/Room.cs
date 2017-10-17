@@ -11,12 +11,13 @@ namespace zucchini_client.Model
         public string Name { get; set; }
         public string Uuid { get; set; }
         public Player Host { get; set; }
-        public List<Player> Players { get; set; }
+        public int Amount { get; set; }
 
-        public Room(string name, string uuid)
+        public Room(string name, string uuid, int amount)
         {
             Uuid = uuid;
             Name = name;
+            Amount = amount;
         }
 
         public Room(string name, Player host)

@@ -16,7 +16,9 @@ namespace zucchini_server.Network
         //todo add list of rooms
 
         private TcpListener _server;
+
         public static bool RUNNING = true;
+        public static int ROOM_SIZE = 4;
 
         public List<Player> Players { get; set; } = new List<Player>();
         public List<Room> Rooms { get; set; } = new List<Room>();

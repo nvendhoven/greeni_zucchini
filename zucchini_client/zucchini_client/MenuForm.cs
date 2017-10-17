@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,17 +27,24 @@ namespace zucchini_client
         private List<Player> _playersInRoom = new List<Player>();
         private Room _currentRoom;
 
-        public Lobby()
+        const int MAX_PLAYERS_IN_ROOM = 4;
+
+        private IPAddress _ip;
+        private string _username;
+
+        public Lobby(IPAddress ip, string username)
         {
             InitializeComponent();
+            _ip = ip;
+            _username = username;
         }
 
         private void Lobby_Load(object sender, EventArgs e)
         {
             pnl_room.Visible = false;
 
-            _api = new ApiCaller(new Connection(this));
-            _self = new Player("Directnix");
+            _api = new ApiCaller(new Connection(_ip, this));
+            _self = new Player(_username);
 
             new Thread(() => {
                 _api.ConnectPlayer(_self);
@@ -51,6 +59,7 @@ namespace zucchini_client
             lb_players.ValueMember = "Uuid";
         }
 
+
         /*
          *  Update UI 
          */
@@ -58,7 +67,7 @@ namespace zucchini_client
         private void UpdateRoomList() {
             lb_rooms.Invoke(new Action(() => lb_rooms.Items.Clear()));
             foreach (Room r in _rooms) {
-                lb_rooms.Invoke(new Action(() => lb_rooms.Items.Add(new ListBoxItem { Name = r.Name, Uuid = r.Uuid })));
+                lb_rooms.Invoke(new Action(() => lb_rooms.Items.Add(new ListBoxItem { Name = $"{r.Name} {r.Amount}/{MAX_PLAYERS_IN_ROOM}", Uuid = r.Uuid })));
             }  
         }
 
@@ -140,6 +149,7 @@ namespace zucchini_client
                     foreach(Room r in _rooms) {
                         if (((ListBoxItem)lb_rooms.SelectedItem).Uuid == r.Uuid) {
                             GotoRoom(r);
+                            _api.RefreshRooms(_self);
                         }
                     }
                 }
@@ -197,7 +207,7 @@ namespace zucchini_client
                 case "room/refresh":
                     _rooms.Clear();
                     foreach (dynamic room in load.data.rooms) {
-                        _rooms.Add(new Room($"{room.name}",$"{room.uuid}"));
+                        _rooms.Add(new Room($"{room.name}", $"{room.uuid}", int.Parse($"{room.amount}")));
                     }
                     UpdateRoomList();
                     break;
@@ -217,6 +227,7 @@ namespace zucchini_client
                     {
                         _api.FetchPlayersInRoom(_currentRoom.Uuid, _self);
                         AppendOnTextbox($"{load.data.playerName}", $"joined the room!");
+                        _api.RefreshRooms(_self);
                     }
                     break;
                 case "room/leave":
@@ -234,9 +245,9 @@ namespace zucchini_client
                     btn_start.Enabled = true;
                     AppendOnTextbox($"{load.data.playerName}", $"you are the new host!!!");
                     break;
-                case "room/noRoom":
+                case "room/join/failed":
                     GotoLobby();
-                    MessageBox.Show("Room no longer excists!");
+                    MessageBox.Show($"{load.data.reason}");
                     _api.RefreshRooms(_self);
                     break;
             }

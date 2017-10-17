@@ -12,12 +12,14 @@ namespace zucchini_server.Network
         public string Name { get; set; }
         public Player Host { get; set; }
         public List<Player> Players { get; set; }
+        public bool InGame { get; set; }
 
         public Room(string uuid, string name, Player host) : this()
         {
             Uuid = uuid;
             Name = name;
             Host = host;
+            InGame = false;
             Players = new List<Player>();
             Players.Add(host);
         }

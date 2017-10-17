@@ -256,6 +256,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Lobby";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Greeni Zucchini";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Lobby_FormClosed);
             this.Load += new System.EventHandler(this.Lobby_Load);
