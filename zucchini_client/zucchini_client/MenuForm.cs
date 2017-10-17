@@ -41,6 +41,8 @@ namespace zucchini_client
 
         private void Lobby_Load(object sender, EventArgs e)
         {
+            pb_logo.Image = Properties.Resources.zucchini;
+
             pnl_room.Visible = false;
 
             _api = new ApiCaller(new Connection(_ip, this));

@@ -25,6 +25,8 @@ namespace zucchini_client
         {
             tb_ip.Text = GetLocalIPAddress().ToString();
             tb_username.Text = "Unknown Zucchini";
+
+            pb_logo.Image = Properties.Resources.zucchini;
         }
 
         private IPAddress GetLocalIPAddress()

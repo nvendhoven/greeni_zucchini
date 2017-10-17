@@ -40,7 +40,7 @@
             // tb_ip
             // 
             this.tb_ip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_ip.Location = new System.Drawing.Point(45, 152);
+            this.tb_ip.Location = new System.Drawing.Point(45, 210);
             this.tb_ip.Name = "tb_ip";
             this.tb_ip.Size = new System.Drawing.Size(214, 22);
             this.tb_ip.TabIndex = 0;
@@ -49,7 +49,7 @@
             // tb_username
             // 
             this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_username.Location = new System.Drawing.Point(45, 212);
+            this.tb_username.Location = new System.Drawing.Point(45, 270);
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(214, 22);
             this.tb_username.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(101, 255);
+            this.btn_connect.Location = new System.Drawing.Point(101, 313);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(100, 43);
             this.btn_connect.TabIndex = 2;
@@ -68,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 136);
+            this.label1.Location = new System.Drawing.Point(42, 194);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 3;
@@ -77,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 196);
+            this.label2.Location = new System.Drawing.Point(42, 254);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 4;
@@ -85,9 +85,11 @@
             // 
             // pb_logo
             // 
+            this.pb_logo.InitialImage = global::zucchini_client.Properties.Resources.zucchini;
             this.pb_logo.Location = new System.Drawing.Point(45, 26);
             this.pb_logo.Name = "pb_logo";
-            this.pb_logo.Size = new System.Drawing.Size(214, 91);
+            this.pb_logo.Size = new System.Drawing.Size(214, 145);
+            this.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_logo.TabIndex = 5;
             this.pb_logo.TabStop = false;
             // 
@@ -95,7 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(306, 310);
+            this.ClientSize = new System.Drawing.Size(308, 380);
             this.Controls.Add(this.pb_logo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

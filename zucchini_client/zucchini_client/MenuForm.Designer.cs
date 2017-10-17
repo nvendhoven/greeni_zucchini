@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_join = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pb_logo = new System.Windows.Forms.PictureBox();
             this.btn_create = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_create = new System.Windows.Forms.TextBox();
@@ -46,7 +46,7 @@
             this.btn_start = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.lb_rooms = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
             this.pnl_lobby.SuspendLayout();
             this.pnl_room.SuspendLayout();
             this.SuspendLayout();
@@ -62,18 +62,19 @@
             this.btn_join.UseVisualStyleBackColor = true;
             this.btn_join.Click += new System.EventHandler(this.btn_join_Click);
             // 
-            // pictureBox1
+            // pb_logo
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(62, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(247, 91);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pb_logo.Location = new System.Drawing.Point(62, 12);
+            this.pb_logo.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_logo.Name = "pb_logo";
+            this.pb_logo.Size = new System.Drawing.Size(247, 158);
+            this.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_logo.TabIndex = 2;
+            this.pb_logo.TabStop = false;
             // 
             // btn_create
             // 
-            this.btn_create.Location = new System.Drawing.Point(152, 242);
+            this.btn_create.Location = new System.Drawing.Point(151, 287);
             this.btn_create.Margin = new System.Windows.Forms.Padding(2);
             this.btn_create.Name = "btn_create";
             this.btn_create.Size = new System.Drawing.Size(70, 24);
@@ -86,7 +87,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(127, 162);
+            this.label1.Location = new System.Drawing.Point(126, 207);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 24);
@@ -96,7 +97,7 @@
             // tb_create
             // 
             this.tb_create.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_create.Location = new System.Drawing.Point(130, 215);
+            this.tb_create.Location = new System.Drawing.Point(129, 260);
             this.tb_create.Margin = new System.Windows.Forms.Padding(2);
             this.tb_create.Name = "tb_create";
             this.tb_create.Size = new System.Drawing.Size(115, 23);
@@ -105,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(140, 199);
+            this.label2.Location = new System.Drawing.Point(139, 244);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
@@ -116,7 +117,7 @@
             // 
             this.pnl_lobby.Controls.Add(this.lb_connection);
             this.pnl_lobby.Controls.Add(this.label1);
-            this.pnl_lobby.Controls.Add(this.pictureBox1);
+            this.pnl_lobby.Controls.Add(this.pb_logo);
             this.pnl_lobby.Controls.Add(this.label2);
             this.pnl_lobby.Controls.Add(this.btn_create);
             this.pnl_lobby.Controls.Add(this.tb_create);
@@ -128,7 +129,7 @@
             // 
             // lb_connection
             // 
-            this.lb_connection.Location = new System.Drawing.Point(62, 106);
+            this.lb_connection.Location = new System.Drawing.Point(62, 172);
             this.lb_connection.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_connection.Name = "lb_connection";
             this.lb_connection.Size = new System.Drawing.Size(247, 19);
@@ -260,7 +261,7 @@
             this.Text = "Greeni Zucchini";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Lobby_FormClosed);
             this.Load += new System.EventHandler(this.Lobby_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).EndInit();
             this.pnl_lobby.ResumeLayout(false);
             this.pnl_lobby.PerformLayout();
             this.pnl_room.ResumeLayout(false);
@@ -272,7 +273,7 @@
         #endregion
 
         private System.Windows.Forms.Button btn_join;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pb_logo;
         private System.Windows.Forms.Button btn_create;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_create;
