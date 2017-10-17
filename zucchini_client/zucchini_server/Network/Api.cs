@@ -138,7 +138,7 @@ namespace zucchini_server.Network
                                     {"id","room/join/failed"},
                                     {"data" , new JObject{
                                         {"reason", "Room is full!"}
-                                     }}
+                                    }}
                                 };
                                 p.Send(send2);
                                 return;
@@ -150,7 +150,7 @@ namespace zucchini_server.Network
                         {"id","room/join/failed"},
                         {"data" , new JObject{
                             {"reason", "Room no longer excists!"}
-                         }}
+                        }}
                     };
                     p.Send(send3);
                     return;

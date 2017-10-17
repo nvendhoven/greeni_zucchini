@@ -112,8 +112,10 @@ namespace zucchini_client
         }
 
         private void GotoLobby() {
-            pnl_room.Visible = false;
-            pnl_lobby.Visible = true;
+            this.Invoke(new MethodInvoker(() => {
+                pnl_room.Visible = false;
+                pnl_lobby.Visible = true;
+            }));
 
             _inRoom = false;
             _self.Host = false;
