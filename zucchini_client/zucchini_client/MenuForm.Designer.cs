@@ -37,6 +37,7 @@
             this.pnl_lobby = new System.Windows.Forms.Panel();
             this.lb_connection = new System.Windows.Forms.Label();
             this.pnl_room = new System.Windows.Forms.Panel();
+            this.lb_players = new System.Windows.Forms.ListBox();
             this.rtb_chat = new System.Windows.Forms.RichTextBox();
             this.btn_send = new System.Windows.Forms.Button();
             this.tb_chat = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.btn_start = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.lb_rooms = new System.Windows.Forms.ListBox();
-            this.lb_players = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_lobby.SuspendLayout();
             this.pnl_room.SuspendLayout();
@@ -151,11 +151,22 @@
             this.pnl_room.Size = new System.Drawing.Size(381, 340);
             this.pnl_room.TabIndex = 8;
             // 
+            // lb_players
+            // 
+            this.lb_players.FormattingEnabled = true;
+            this.lb_players.Location = new System.Drawing.Point(268, 37);
+            this.lb_players.Name = "lb_players";
+            this.lb_players.Size = new System.Drawing.Size(102, 225);
+            this.lb_players.TabIndex = 7;
+            // 
             // rtb_chat
             // 
+            this.rtb_chat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtb_chat.Location = new System.Drawing.Point(4, 37);
             this.rtb_chat.Margin = new System.Windows.Forms.Padding(2);
             this.rtb_chat.Name = "rtb_chat";
+            this.rtb_chat.ReadOnly = true;
+            this.rtb_chat.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.rtb_chat.Size = new System.Drawing.Size(260, 262);
             this.rtb_chat.TabIndex = 6;
             this.rtb_chat.Text = "";
@@ -169,6 +180,7 @@
             this.btn_send.TabIndex = 5;
             this.btn_send.Text = "SEND";
             this.btn_send.UseVisualStyleBackColor = true;
+            this.btn_send.Click += new System.EventHandler(this.btn_send_Click);
             // 
             // tb_chat
             // 
@@ -231,14 +243,6 @@
             this.lb_rooms.Size = new System.Drawing.Size(110, 264);
             this.lb_rooms.TabIndex = 9;
             // 
-            // lb_players
-            // 
-            this.lb_players.FormattingEnabled = true;
-            this.lb_players.Location = new System.Drawing.Point(268, 37);
-            this.lb_players.Name = "lb_players";
-            this.lb_players.Size = new System.Drawing.Size(102, 225);
-            this.lb_players.TabIndex = 7;
-            // 
             // Lobby
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +257,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Lobby";
             this.Text = "Greeni Zucchini";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Lobby_FormClosed);
             this.Load += new System.EventHandler(this.Lobby_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_lobby.ResumeLayout(false);

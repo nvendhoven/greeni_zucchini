@@ -52,6 +52,20 @@ namespace zucchini_server.Network
             }).Start();
         }
 
+        public void SendToAllPlayersInRoom(Room room, JObject send) {
+            foreach (Room r in Rooms) {
+                if (r.Uuid == room.Uuid)
+                {
+                    foreach (Player p in room.Players)
+                    {
+                        p.Send(send);
+                    }
+                    return;
+                }
+            }
+            Program.Print(PrintType.ERR, $"send to all, room not found: {room.Uuid}");
+        }
+
         /*
          *  Function methods
          */

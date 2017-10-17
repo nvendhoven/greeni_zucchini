@@ -11,6 +11,7 @@ namespace zucchini_client.Model
 
         public string Uuid { get; set; }
         public string Name { get; set; }
+        public bool Host { get; set; } = false;
 
         private bool _self = false;
 
@@ -26,6 +27,13 @@ namespace zucchini_client.Model
             Uuid = uuid;
             Name = name;
         }
-       
+
+        public Player(string name, string uuid, bool host)
+        {
+            Uuid = uuid;
+            Name = name;
+            Host = host;
+        }
+
     }
 }

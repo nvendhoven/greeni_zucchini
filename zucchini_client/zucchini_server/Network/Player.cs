@@ -44,6 +44,7 @@ namespace zucchini_server.Network
                         _listener.OnReceiveData(Encoding.ASCII.GetString(buffer, 0, bytesRead));
                     }
                     catch (Exception e) {
+                        // TODO: Leave room
                         Disconnect();
                     }
                 }

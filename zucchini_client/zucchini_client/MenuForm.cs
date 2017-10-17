@@ -24,6 +24,7 @@ namespace zucchini_client
 
         private bool _inRoom = false;
         private List<Player> _playersInRoom = new List<Player>();
+        private Room _currentRoom;
 
         public Lobby()
         {
@@ -69,22 +70,50 @@ namespace zucchini_client
             lb_players.Invoke(new Action(() => lb_players.Items.Clear()));
             foreach (Player p in _playersInRoom)
             {
-                lb_players.Invoke(new Action(() => lb_players.Items.Add(new ListBoxItem { Name = p.Name, Uuid = p.Uuid })));
+                if(p.Host)
+                    lb_players.Invoke(new Action(() => lb_players.Items.Add(new ListBoxItem { Name = $"*{p.Name}", Uuid = p.Uuid })));
+                else
+                    lb_players.Invoke(new Action(() => lb_players.Items.Add(new ListBoxItem { Name = p.Name, Uuid = p.Uuid })));
             }
         }
 
         private void GotoRoom(Room room) {
             _inRoom = true;
+            btn_start.Enabled = false;
+
             this.Invoke(new MethodInvoker(() => {
+                rtb_chat.Clear();
                 pnl_room.Visible = true;
                 pnl_lobby.Visible = false;
 
                 lb_room_name.Text = room.Name;
             }));
 
+            _currentRoom = room;
+
             new Thread(() => {
+                Thread.Sleep(100);
                 _api.FetchPlayersInRoom(room.Uuid, _self);
             }).Start();
+
+            if (_self.Host)
+                btn_start.Enabled = true;
+        }
+
+        private void GotoLobby() {
+            pnl_room.Visible = false;
+            pnl_lobby.Visible = true;
+
+            _inRoom = false;
+            _self.Host = false;
+            _currentRoom = null;
+        }
+
+        private void AppendOnTextbox(string playerName, string text)
+        {
+            this.Invoke(new MethodInvoker(() => {
+                    rtb_chat.AppendText($"[{playerName}] {text}\n");
+            }));
         }
 
         /*
@@ -94,6 +123,7 @@ namespace zucchini_client
         private void btn_create_Click(object sender, EventArgs e)
         {
             var room = new Room(tb_create.Text, _self);
+            _self.Host = true;
             _api.CreateRoom(room);
             _api.RefreshRooms(_self);
             GotoRoom(room);
@@ -126,10 +156,30 @@ namespace zucchini_client
 
         private void btn_leave_Click(object sender, EventArgs e)
         {
-            //todo leave room serversided
-            pnl_room.Visible = false;
-            pnl_lobby.Visible = true;
-            _inRoom = false;
+            if (_currentRoom != null)
+            {
+                _api.LeaveRoom(_currentRoom.Uuid, _self);
+                Thread.Sleep(50);
+                _api.RefreshRooms(_self);
+            }
+
+            GotoLobby();
+        }
+
+        private void Lobby_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (_currentRoom != null)
+                _api.LeaveRoom(_currentRoom.Uuid, _self);
+
+            Thread.Sleep(1000);
+
+            Environment.Exit(0);
+        }
+
+        private void btn_send_Click(object sender, EventArgs e)
+        {
+            _api.Message(tb_chat.Text.ToString(), _currentRoom.Uuid, _self);
+            tb_chat.Clear();
         }
 
         /*
@@ -155,11 +205,39 @@ namespace zucchini_client
                     _playersInRoom.Clear();
                     foreach (dynamic player in load.data.players)
                     {
-                        _playersInRoom.Add(new Player($"{player.name}", $"{player.uuid}")); //todo is host! Also update on other join and leave
+                        if(Boolean.Parse($"{player.isHost}"))
+                            _playersInRoom.Add(new Player($"{player.name}", $"{player.uuid}", true));
+                        else
+                            _playersInRoom.Add(new Player($"{player.name}", $"{player.uuid}"));
                     }
                     UpdatePlayerList();
                     break;
-                case "room/chat":
+                case "room/join":
+                    if (_currentRoom != null)
+                    {
+                        _api.FetchPlayersInRoom(_currentRoom.Uuid, _self);
+                        AppendOnTextbox($"{load.data.playerName}", $"joined the room!");
+                    }
+                    break;
+                case "room/leave":
+                    if (_currentRoom != null)
+                    {
+                        _api.FetchPlayersInRoom(_currentRoom.Uuid, _self);
+                        AppendOnTextbox($"{load.data.playerName}", $"left the room!");
+                    }
+                    break;
+                case "room/message":
+                    AppendOnTextbox($"{load.data.playerName}", $"{load.data.message}");
+                    break;
+                case "room/newHost":
+                    _self.Host = true;
+                    btn_start.Enabled = true;
+                    AppendOnTextbox($"{load.data.playerName}", $"you are the new host!!!");
+                    break;
+                case "room/noRoom":
+                    GotoLobby();
+                    MessageBox.Show("Room no longer excists!");
+                    _api.RefreshRooms(_self);
                     break;
             }
         }

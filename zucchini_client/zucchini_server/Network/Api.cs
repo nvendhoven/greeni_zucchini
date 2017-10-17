@@ -30,13 +30,13 @@ namespace zucchini_server.Network
                     JoinRoom(load.data);
                     break;
                 case "room/leave":
-                    // TODO : player leave room ALSO on player disconnect
+                    LeaveRoom(load.data);
                     break;
                 case "room/players":
                     PlayersInRoom(load.data);
                     break;
                 case "room/message":
-                    // TODO : send message to room
+                    Message(load.data);
                     break;
                 default:
                     Program.Print(PrintType.ERR, $"incorrect load id was given! : \"{load.id}\"");
@@ -54,6 +54,7 @@ namespace zucchini_server.Network
         void CreateRoom(dynamic data) {
             foreach (Player p in Server.Get().Players) {
                 if (p.Uuid == $"{data.hostUuid}") {
+                    p.Host = true;
                     Server.Get().Rooms.Add(new Room($"{data.roomUuid}", $"{data.name}", p));
                     Program.Print(PrintType.ACK, $"room {data.name} created with host: {p.Name}");
                     return;
@@ -104,10 +105,49 @@ namespace zucchini_server.Network
                     }
                 }
             }
-            Program.Print(PrintType.ERR, $"room with id {data.roomUuid} not found! Or player with id {data.playerUuid} not found!");
+            Program.Print(PrintType.ERR, $"room with id {data.roomUuid} not found!");
         }
 
-        void JoinRoom(dynamic data) { //todo, check if host
+        void JoinRoom(dynamic data)
+        {
+            foreach (Player p in Server.Get().Players)
+            {
+                if (p.Uuid == $"{data.playerUuid}")
+                {
+                    foreach (Room r in Server.Get().Rooms)
+                    {
+                        if (r.Uuid == $"{data.roomUuid}")
+                        {
+                            var send = new JObject{
+                                    {"id","room/join"},
+                                    {"data" , new JObject{
+                                        {"playerName", p.Name}
+                                    }}
+                            };
+
+                            Server.Get().SendToAllPlayersInRoom(r, send);
+
+                            r.Players.Add(p);
+                            Program.Print(PrintType.ACK, $"{p.Name} joined room {r.Name}");
+                            return;
+                        }
+                    }
+
+                    var send2 = new JObject{
+                        {"id","room/noRoom"},
+                        {"data" , new JObject{
+                            {"playerUuid", p.Uuid}
+                         }}
+                    };
+                    p.Send(send2);
+                    return;
+                }
+            }
+            Program.Print(PrintType.ERR, $"joining room failed! Room and Player do not excist!");
+        }
+
+        void LeaveRoom(dynamic data) //todo, check if host, choose new host
+        {
             foreach (Room r in Server.Get().Rooms)
             {
                 if (r.Uuid == $"{data.roomUuid}")
@@ -116,8 +156,72 @@ namespace zucchini_server.Network
                     {
                         if (p.Uuid == $"{data.playerUuid}")
                         {
-                            r.Players.Add(p);
-                            Program.Print(PrintType.ACK, $"{p.Name} joined room {r.Name}");
+                            var send = new JObject{
+                                    {"id","room/leave"},
+                                    {"data" , new JObject{
+                                        {"playerName", p.Name}
+                                    }}
+                            };
+
+                            r.Players.Remove(p);
+
+                            if (p.Host)
+                            {
+                                p.Host = false;
+
+                                if (r.Players.Count != 0)
+                                {
+
+                                    var send2 = new JObject{
+                                        {"id","room/newHost"},
+                                        {"data" , new JObject{
+                                            {"playerName", r.Players.First().Name}
+                                        }}
+                                    };
+                                    r.Players.First().Host = true;
+                                    r.Players.First().Send(send2);
+                                }
+                                else
+                                {
+                                    Server.Get().Rooms.Remove(r);
+                                    Program.Print(PrintType.ACK, $"room {r.Name} has been removed");
+                                    return;
+                                }
+                            }
+
+                            Server.Get().SendToAllPlayersInRoom(r, send);
+
+                            Program.Print(PrintType.ACK, $"{p.Name} left room {r.Name}");
+                            return;
+                        }
+                    }
+                }
+            }
+
+            Program.Print(PrintType.ERR, $"joining room failed! Room or Player does not excist!");
+        }
+
+        void Message(dynamic data)
+        {
+            foreach (Room r in Server.Get().Rooms)
+            {
+                if (r.Uuid == $"{data.roomUuid}")
+                {
+                    foreach (Player p in Server.Get().Players)
+                    {
+                        if (p.Uuid == $"{data.playerUuid}")
+                        {
+                            var send = new JObject{
+                                    {"id","room/message"},
+                                    {"data" , new JObject{
+                                        {"message", data.message},
+                                        {"playerName", p.Name}
+                                    }}
+                            };
+
+                            Server.Get().SendToAllPlayersInRoom(r, send);
+
+                            Program.Print(PrintType.ACK, $"{p.Name} sended a message!");
                             return;
                         }
                     }
