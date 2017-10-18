@@ -212,6 +212,15 @@ namespace zucchini_client
             tb_chat.Clear();
         }
 
+        private void tb_chat_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                _api.Message(tb_chat.Text.ToString(), _currentRoom.Uuid, _self);
+                tb_chat.Clear();
+            }
+        }
+
         /*
          *  Network Listeners 
          */
@@ -285,6 +294,7 @@ namespace zucchini_client
         {
             lb_connection.Invoke(new Action(() => lb_connection.Text = "Cannot connect to server."));
         }
+
     }
 
     class ListBoxItem

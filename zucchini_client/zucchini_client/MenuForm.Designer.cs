@@ -191,6 +191,7 @@
             this.tb_chat.Name = "tb_chat";
             this.tb_chat.Size = new System.Drawing.Size(260, 28);
             this.tb_chat.TabIndex = 4;
+            this.tb_chat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_chat_KeyDown);
             // 
             // lb_room_name
             // 
