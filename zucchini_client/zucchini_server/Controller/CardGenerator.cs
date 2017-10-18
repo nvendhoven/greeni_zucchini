@@ -15,13 +15,13 @@ namespace zucchini_server.Controller
 
             Random rnd = new Random();
             vegetable = (Vegetable)values.GetValue(rnd.Next(values.Length));
-            var pick = rnd.Next(1, 27);
+            var pick = rnd.Next(1, 28);
 
-            if (pick <= 10)
+            if (pick <= 8)
             {
                 amount = 1;
             }
-            else if (pick <= 18)
+            else if (pick <= 17)
             {
                 amount = 2;
             }

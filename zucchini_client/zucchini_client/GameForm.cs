@@ -40,11 +40,11 @@ namespace zucchini_client
 
         private void GameForm_Load(object sender, EventArgs e)
         {
-            UpdateUI();
+            InitUI();
             lb_note.Text = "";
         }
 
-        public void UpdateUI() {
+        public void InitUI() {
             this.Invoke(new MethodInvoker(() =>
             {
                 pb_player1_currentcard.Visible = false;
@@ -88,6 +88,24 @@ namespace zucchini_client
                     }
                 }
             }));
+        }
+
+        private void NewRound()
+        {
+            this.Invoke(new MethodInvoker(() =>
+            {
+                pb_player1_currentcard.Visible = false;
+                pb_player2_currentcard.Visible = false;
+                pb_player3_currentcard.Visible = false;
+                pb_player4_currentcard.Visible = false;
+            }));
+
+            _currentCards = new Tuple<string, int>[4] {
+                Tuple.Create<string, int>("ZUCCHINI", 0),
+                Tuple.Create<string, int>("ZUCCHINI", 0),
+                Tuple.Create<string, int>("ZUCCHINI", 0),
+                Tuple.Create<string, int>("ZUCCHINI", 0)
+            };
         }
 
         public void CardChange(string vegetable, int amount, Player player)
@@ -241,7 +259,10 @@ namespace zucchini_client
                     {
                         if (p.Uuid == $"{load.data.playerUuid}")
                         {
-                            ShowNote($"{p.Name} pressed! Correct:{load.data.isCorrect}");
+                            ShowNote($"{p.Name} pressed! Correct: {load.data.isCorrect}");
+                            if (bool.Parse($"{load.data.isCorrect}")) {
+                                NewRound();
+                            }
                             return;
                         }
                     }
@@ -255,7 +276,7 @@ namespace zucchini_client
         private void ShowNote(string text) {
             new Thread(() => {
                 lb_note.Invoke(new Action(() => lb_note.Text = text));
-                Thread.Sleep(5000);
+                Thread.Sleep(3200);
                 lb_note.Invoke(new Action(() => lb_note.Text = ""));
             }).Start();
         }
