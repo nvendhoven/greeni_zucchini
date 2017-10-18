@@ -109,5 +109,89 @@
   <ItemGroup>
     <None Include="Resources\zucchini.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corn1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corn2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corn3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corn4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corn5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eggplant1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eggplant2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eggplant3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eggplant4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eggplant5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\karrot1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\karrot2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\karrot3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\karrot4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\karrot5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tomato1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tomato2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tomato3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tomato4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tomato5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zuch1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zuch2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zuch3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zuch4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zuch5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\achterkantkaart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Knipsel.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bell.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

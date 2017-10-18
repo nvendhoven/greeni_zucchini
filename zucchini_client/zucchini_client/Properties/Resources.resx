@@ -118,7 +118,91 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="corn1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corn1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zuch5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zuch5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tomato1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tomato1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="karrot1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\karrot1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tomato4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tomato4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zuch3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zuch3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tomato5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tomato5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zuch4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zuch4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="achterkantkaart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\achterkantkaart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Knipsel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Knipsel.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eggplant3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eggplant3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tomato2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tomato2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zuch2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zuch2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eggplant2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eggplant2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tomato3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tomato3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="corn5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corn5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eggplant5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eggplant5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="corn3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corn3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="karrot3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\karrot3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="zucchini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zucchini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="karrot5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\karrot5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="corn2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corn2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="karrot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\karrot2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="karrot4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\karrot4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zuch1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zuch1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eggplant1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eggplant1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="corn4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corn4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eggplant4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eggplant4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bell" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
