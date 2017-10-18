@@ -125,14 +125,14 @@ namespace zucchini_server.Network
             throw new NotImplementedException();
         }
 
-        public void OnCard(Game game, Vegetable vegetable, int amount)
+        public void OnCard(Game game, Vegetable vegetable, int amount, Player player)
         {
             var send = new JObject{
                                     {"id","game/card"},
                                     {"data" , new JObject{
                                         {"vegetable", vegetable.ToString()},
                                         {"amount", amount},
-                                        {"playerUuid", "TO IMPLEMENT" }
+                                        {"playerUuid", player.Uuid }
                                     }}
                                 };
 
@@ -148,7 +148,20 @@ namespace zucchini_server.Network
                                     }}
                                 };
 
-            //SendToAllPlayersInGame(game, send);
+            SendToAllPlayersInGame(game, send);
+        }
+
+        public void OnBellPressed(Game game, Player player, bool isCorrect)
+        {
+            var send = new JObject{
+                                    {"id","game/bell"},
+                                    {"data" , new JObject{
+                                        {"playerUuid", player.Uuid },
+                                        {"isCorrect", isCorrect }
+                                    }}
+                                };
+
+            SendToAllPlayersInGame(game, send);
         }
     }
 }

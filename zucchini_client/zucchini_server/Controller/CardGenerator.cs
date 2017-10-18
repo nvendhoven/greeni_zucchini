@@ -12,11 +12,30 @@ namespace zucchini_server.Controller
         public static void Generate(out Vegetable vegetable, out int amount) {
 
             Array values = Enum.GetValues(typeof(Vegetable));
-            Random rndV = new Random();
-            vegetable = (Vegetable)values.GetValue(rndV.Next(values.Length));
 
-            Random rndA = new Random();
-            amount = rndA.Next(1, 6);
+            Random rnd = new Random();
+            vegetable = (Vegetable)values.GetValue(rnd.Next(values.Length));
+            var pick = rnd.Next(1, 27);
+
+            if (pick <= 10)
+            {
+                amount = 1;
+            }
+            else if (pick <= 18)
+            {
+                amount = 2;
+            }
+            else if (pick <= 23)
+            {
+                amount = 3;
+            }
+            else if (pick <= 26)
+            {
+                amount = 4;
+            }
+            else {
+                amount = 5;
+            }
         }
     }
 

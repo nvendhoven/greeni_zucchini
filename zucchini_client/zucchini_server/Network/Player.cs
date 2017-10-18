@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,9 @@ namespace zucchini_server.Network
                 {
                     byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(json.ToString());
                     _stream.Write(bytesToSend, 0, bytesToSend.Length);
-                    Program.Print(PrintType.SEND, $"sended {json.ToString()} to {Name}");
+
+                    dynamic load = JsonConvert.DeserializeObject(json.ToString(), typeof(object));
+                    Program.Print(PrintType.SEND, $"sended {load.id} to {Name}");
                 }
 
             }).Start();

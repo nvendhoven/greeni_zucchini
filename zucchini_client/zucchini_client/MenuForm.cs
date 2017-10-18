@@ -305,6 +305,11 @@ namespace zucchini_client
         public void LeaveGame() {
             _api.LeaveGame(Game.Uuid, _self);
         }
+
+        public void Bell(bool isCorrect) {
+            _api.Bell(Game.Uuid, _self, isCorrect);
+        }
+
     }
 
     class ListBoxItem

@@ -12,7 +12,7 @@ namespace zucchini_server.Network
     class Api
     {
         public void Receive(dynamic load) {
-           //Program.Print(PrintType.REC, $"received: \"{load.id}\"");
+           Program.Print(PrintType.ACK, $"received: \"{load.id}\"");
 
             switch ($"{load.id}") {
                 case "player/connect":
@@ -42,11 +42,8 @@ namespace zucchini_server.Network
                 case "room/start":
                     StartGame(load.data);
                     break;
-                case "game/bell/correct": //TODO: When bell hit is correct
-
-                    break;
-                case "game/bell/wrong": //TODO: When bell hit is wrong
-
+                case "game/bell":
+                    Bell(load.data);
                     break;
                 case "game/leave":
                     LeaveGame(load.data);
@@ -83,6 +80,22 @@ namespace zucchini_server.Network
                     game.Start();
 
                     Program.Print(PrintType.ACK, $"game started with id {game.Uuid}");
+                }
+            }
+        }
+
+        void Bell(dynamic data) {
+            foreach (Game g in Server.Get().Games)
+            {
+                if (g.Uuid == $"{data.gameUuid}")
+                {
+                    foreach (Player p in g.Players)
+                    {
+                        if (p.Uuid == $"{data.playerUuid}")
+                        {
+                            g.Bell(bool.Parse($"{data.isCorrect}"), p);
+                        }
+                    }
                 }
             }
         }
