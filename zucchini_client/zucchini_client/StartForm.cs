@@ -56,10 +56,15 @@ namespace zucchini_client
         {
             try
             {
-                var lobby = new Lobby(IPAddress.Parse(tb_ip.Text), tb_username.Text);
-                Thread.Sleep(1000);
-                lobby.Show();
-                Hide();
+                if (tb_username.Text.Length > 3)
+                {
+                    var lobby = new Lobby(IPAddress.Parse(tb_ip.Text), tb_username.Text);
+                    Thread.Sleep(1000);
+                    lobby.Show();
+                    Hide();
+                }
+                else
+                    MessageBox.Show($"Try a longer username");
             }
             catch (Exception ex) {
                 MessageBox.Show($"Incorrect IP address");

@@ -151,11 +151,15 @@ namespace zucchini_client
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            var room = new Room(tb_create.Text, _self);
-            _self.Host = true;
-            _api.CreateRoom(room);
-            _api.RefreshRooms(_self);
-            GotoRoom(room);
+            if (tb_create.Text.Length > 3)
+            {
+                var room = new Room(tb_create.Text, _self);
+                _self.Host = true;
+                _api.CreateRoom(room);
+                _api.RefreshRooms(_self);
+                GotoRoom(room);
+            }else
+                MessageBox.Show($"Try a longer room name!");
         }
 
         private void btn_join_Click(object sender, EventArgs e)
