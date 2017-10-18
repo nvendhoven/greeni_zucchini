@@ -38,12 +38,32 @@ namespace zucchini_server.Network
                 case "room/message":
                     Message(load.data);
                     break;
+                case "room/start":
+                    StartGame(load.data);
+                    break;
                 default:
                     Program.Print(PrintType.ERR, $"incorrect load id was given! : \"{load.id}\"");
                     break;
             }
         }
 
+        void StartGame(dynamic data) {
+            foreach (Room r in Server.Get().Rooms) {
+                if(r.Uuid == $"{data.roomUuid}")
+                {
+                    r.InGame = true;
+
+                    var send = new JObject{
+                                    {"id","room/start"},
+                                    {"data" , new JObject{
+                                        {"roomUuid", r.Uuid}
+                                    }}
+                                };
+
+                    Server.Get().SendToAllPlayersInRoom(r, send);
+                }
+            }
+        }
         
         void ChangePlayerData(dynamic data) {
             Server.Get().Players.Last().Name = data.name;

@@ -32,6 +32,8 @@ namespace zucchini_client
         private IPAddress _ip;
         private string _username;
 
+        public GameForm Game { get; set; }
+
         public Lobby(IPAddress ip, string username)
         {
             InitializeComponent();
@@ -129,9 +131,23 @@ namespace zucchini_client
             }));
         }
 
+        private void StartGame() {
+            this.Invoke(new MethodInvoker(() =>
+            {
+                Game = new GameForm(this);
+                Game.Show();
+                Hide();
+            }));
+        }
+
         /*
          *  Button Delegates 
          */
+
+        private void btn_start_Click(object sender, EventArgs e)
+        {
+            _api.StartGame(_currentRoom.Uuid);
+        }
 
         private void btn_create_Click(object sender, EventArgs e)
         {
@@ -207,6 +223,11 @@ namespace zucchini_client
 
         public void OnDataReceived(dynamic load)
         {
+            if ($"{load.id}".Split('/')[0] == "game" && Game != null) {
+                Game.OnDataReceived(load);
+                return;
+            }
+
             switch ($"{load.id}") {
                 case "room/refresh":
                     _rooms.Clear();
@@ -253,6 +274,9 @@ namespace zucchini_client
                     GotoLobby();
                     MessageBox.Show($"{load.data.reason}");
                     _api.RefreshRooms(_self);
+                    break;
+                case "room/start":
+                    StartGame();
                     break;
             }
         }

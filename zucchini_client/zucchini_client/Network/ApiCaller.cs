@@ -65,6 +65,17 @@ namespace zucchini_client.Network
             Connection.Send(data);
         }
 
+        public void StartGame(string roomuuid)
+        {
+            var data = new JObject{
+                {"id","room/start"},
+                {"data" , new JObject{
+                    {"roomUuid", roomuuid}
+                }}
+            };
+            Connection.Send(data);
+        }
+
         public void LeaveRoom(string roomuuid, Player player)
         {
             var data = new JObject{

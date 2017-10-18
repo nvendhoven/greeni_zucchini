@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace zucchini_server.Network
 {
-    struct Room
+    class Room
     {
         public string Uuid { get; set; }
         public string Name { get; set; }
@@ -14,7 +14,7 @@ namespace zucchini_server.Network
         public List<Player> Players { get; set; }
         public bool InGame { get; set; }
 
-        public Room(string uuid, string name, Player host) : this()
+        public Room(string uuid, string name, Player host)
         {
             Uuid = uuid;
             Name = name;
