@@ -42,14 +42,13 @@ namespace zucchini_client.Network
             Connection.Send(data);
         }
 
-        public void Bell(string gameuuid, Player player, bool isCorrect)
+        public void Bell(string gameuuid, Player player)
         {
             var data = new JObject{
                 {"id","game/bell"},
                 {"data" , new JObject{
                     {"gameUuid", gameuuid},
-                    {"playerUuid", player.Uuid },
-                    {"isCorrect", isCorrect}
+                    {"playerUuid", player.Uuid }
                 }}
             };
             Connection.Send(data);

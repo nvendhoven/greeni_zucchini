@@ -22,20 +22,12 @@ namespace zucchini_client
 
         private List<Player> _players;
 
-        private Tuple<string, int>[] _currentCards; 
-
         public GameForm(string uuid, List<Player> players, Lobby menu)
         {
             InitializeComponent();
             Uuid = uuid;
             _players = players;
             _menu = menu;
-            _currentCards = new Tuple<string, int>[4] {
-                Tuple.Create<string, int>("ZUCCHINI", 0),
-                Tuple.Create<string, int>("ZUCCHINI", 0),
-                Tuple.Create<string, int>("ZUCCHINI", 0),
-                Tuple.Create<string, int>("ZUCCHINI", 0)
-            };
         }
 
         private void GameForm_Load(object sender, EventArgs e)
@@ -100,12 +92,6 @@ namespace zucchini_client
                 pb_player4_currentcard.Visible = false;
             }));
 
-            _currentCards = new Tuple<string, int>[4] {
-                Tuple.Create<string, int>("ZUCCHINI", 0),
-                Tuple.Create<string, int>("ZUCCHINI", 0),
-                Tuple.Create<string, int>("ZUCCHINI", 0),
-                Tuple.Create<string, int>("ZUCCHINI", 0)
-            };
         }
 
         public void CardChange(string vegetable, int amount, Player player)
@@ -220,25 +206,21 @@ namespace zucchini_client
                 {
                     pb_player1_currentcard.Image = image;
                     pb_player1_currentcard.Visible = true;
-                    _currentCards[0] = Tuple.Create<string, int>(vegetable, amount);
                 }
                 else if (_players.IndexOf(player) == 1)
                 {
                     pb_player2_currentcard.Image = RotateImage(image, 90);
                     pb_player2_currentcard.Visible = true;
-                    _currentCards[1] = Tuple.Create<string, int>(vegetable, amount);
                 }
                 else if (_players.IndexOf(player) == 2)
                 {
                     pb_player3_currentcard.Image = RotateImage(image, 180);
                     pb_player3_currentcard.Visible = true;
-                    _currentCards[2] = Tuple.Create<string, int>(vegetable, amount);
                 }
                 else if (_players.IndexOf(player) == 3)
                 {
                     pb_player4_currentcard.Image = RotateImage(image, 270);
                     pb_player4_currentcard.Visible = true;
-                    _currentCards[3] = Tuple.Create<string, int>(vegetable, amount);
                 }
             }));
         }
@@ -294,34 +276,7 @@ namespace zucchini_client
         {
             if (e.KeyCode == Keys.Space)
             {
-                Debug.WriteLine("Pressed");
-
-                int zucchini = 0, carrot = 0, tomato = 0, corn = 0, eggplant = 0;
-                foreach (Tuple<string, int> card in _currentCards) {
-                    switch (card.Item1)
-                    {
-                        case "ZUCCHINI":
-                            zucchini += card.Item2;
-                            break;
-                        case "EGGPLANT":
-                            eggplant += card.Item2;
-                            break;
-                        case "CORN":
-                            corn += card.Item2;
-                            break;
-                        case "TOMATO":
-                            tomato += card.Item2;
-                            break;
-                        case "CARROT":
-                            carrot += card.Item2;
-                            break;
-                    }
-                }
-
-                if (zucchini == 5 || carrot == 5 || tomato == 5 || corn == 5 || eggplant == 5)
-                    _menu.Bell(true);
-                else
-                    _menu.Bell(false);
+                _menu.Bell();
             }
         }
 

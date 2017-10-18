@@ -93,7 +93,7 @@ namespace zucchini_server.Network
                     {
                         if (p.Uuid == $"{data.playerUuid}")
                         {
-                            g.Bell(bool.Parse($"{data.isCorrect}"), p);
+                            g.Bell(p);
                         }
                     }
                 }

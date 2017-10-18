@@ -306,8 +306,8 @@ namespace zucchini_client
             _api.LeaveGame(Game.Uuid, _self);
         }
 
-        public void Bell(bool isCorrect) {
-            _api.Bell(Game.Uuid, _self, isCorrect);
+        public void Bell() {
+            _api.Bell(Game.Uuid, _self);
         }
 
     }
