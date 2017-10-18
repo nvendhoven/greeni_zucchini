@@ -8,7 +8,7 @@ using zucchini_client.Model;
 
 namespace zucchini_client.Network
 {
-    class ApiCaller
+    public class ApiCaller
     {
         public Connection Connection { get; set; }
 
@@ -71,6 +71,18 @@ namespace zucchini_client.Network
                 {"id","room/start"},
                 {"data" , new JObject{
                     {"roomUuid", roomuuid}
+                }}
+            };
+            Connection.Send(data);
+        }
+
+        public void LeaveGame(string gameuuid, Player player)
+        {
+            var data = new JObject{
+                {"id","game/leave"},
+                {"data" , new JObject{
+                    {"gameUuid", gameuuid},
+                    {"playerUuid", player.Uuid}
                 }}
             };
             Connection.Send(data);

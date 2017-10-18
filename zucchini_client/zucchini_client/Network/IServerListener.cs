@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace zucchini_client.Network
 {
-    interface IServerListener
+    public interface IServerListener
     {
         void OnConnected();
         void OnDataReceived(dynamic load);

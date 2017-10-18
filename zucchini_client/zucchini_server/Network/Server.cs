@@ -8,10 +8,11 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using zucchini_server.Controller;
 
 namespace zucchini_server.Network
 {
-    class Server : IPlayerListener
+    class Server : IPlayerListener, IGameListener
     {
         //todo add list of rooms
 
@@ -22,6 +23,7 @@ namespace zucchini_server.Network
 
         public List<Player> Players { get; set; } = new List<Player>();
         public List<Room> Rooms { get; set; } = new List<Room>();
+        public List<Game> Games { get; set; } = new List<Game>();
 
         private Api _api;
 
@@ -68,6 +70,24 @@ namespace zucchini_server.Network
             Program.Print(PrintType.ERR, $"send to all, room not found: {room.Uuid}");
         }
 
+        public void SendToAllPlayersInGame(Game game, JObject send)
+        {
+            foreach (Game g in Games)
+            {
+                if (g.Uuid == game.Uuid)
+                {
+                    foreach (Player p in game.Players)
+                    {
+                        if (p.InGame) {
+                            p.Send(send);
+                        }
+                    }
+                    return;
+                }
+            }
+            Program.Print(PrintType.ERR, $"send to all, game not found: {game.Uuid}");
+        }
+
         /*
          *  Function methods
          */
@@ -98,6 +118,37 @@ namespace zucchini_server.Network
         public void OnReceiveData(string data)
         {
             _api.Receive(JObject.Parse(data));
+        }
+
+        public void OnWin(Game game, Player player)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnCard(Game game, Vegetable vegetable, int amount)
+        {
+            var send = new JObject{
+                                    {"id","game/card"},
+                                    {"data" , new JObject{
+                                        {"vegetable", vegetable.ToString()},
+                                        {"amount", amount},
+                                        {"playerUuid", "TO IMPLEMENT" }
+                                    }}
+                                };
+
+            SendToAllPlayersInGame(game, send);
+        }
+
+        public void OnPlayerLeave(Game game, Player player)
+        {
+            var send = new JObject{
+                                    {"id","game/leave"},
+                                    {"data" , new JObject{
+                                        {"playerUuid", player.Uuid }
+                                    }}
+                                };
+
+            //SendToAllPlayersInGame(game, send);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace zucchini_client
 {
     public partial class Lobby : Form , IServerListener
     {
-        private ApiCaller _api;
+        private ApiCaller _api { get; set; }
         private Player _self;
 
         private List<Room> _rooms = new List<Room>();
@@ -131,10 +131,10 @@ namespace zucchini_client
             }));
         }
 
-        private void StartGame() {
+        private void StartGame(string gameUuid) {
             this.Invoke(new MethodInvoker(() =>
             {
-                Game = new GameForm(this);
+                Game = new GameForm(gameUuid, _playersInRoom, this);
                 Game.Show();
                 Hide();
             }));
@@ -280,7 +280,7 @@ namespace zucchini_client
                     break;
                 case "room/newHost":
                     _self.Host = true;
-                    btn_start.Enabled = true;
+                    btn_start.Invoke(new Action(() => btn_start.Enabled = true));
                     AppendOnTextbox($"{load.data.playerName}", $"you are the new host!!!");
                     break;
                 case "room/join/failed":
@@ -290,7 +290,7 @@ namespace zucchini_client
                     break;
                 case "room/start":
                     if(_playersInRoom.Count > 1)
-                        StartGame();
+                        StartGame($"{load.data.gameUuid}");
                     else
                         MessageBox.Show($"Can't start game with only one player!");
                     break;
@@ -302,6 +302,9 @@ namespace zucchini_client
             lb_connection.Invoke(new Action(() => lb_connection.Text = "Cannot connect to server."));
         }
 
+        public void LeaveGame() {
+            _api.LeaveGame(Game.Uuid, _self);
+        }
     }
 
     class ListBoxItem

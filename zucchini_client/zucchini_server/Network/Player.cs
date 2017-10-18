@@ -20,6 +20,7 @@ namespace zucchini_server.Network
         public string Uuid { get; set; }
         public string Name { get; set; }
         public bool Host { get; set; }
+        public bool InGame { get; set; }
 
         public Player(TcpClient client, IPlayerListener listener)
         {
@@ -28,6 +29,7 @@ namespace zucchini_server.Network
             _stream = _client.GetStream();
 
             Host = false;
+            InGame = false;
             Read();
         }
 
@@ -44,7 +46,6 @@ namespace zucchini_server.Network
                         _listener.OnReceiveData(Encoding.ASCII.GetString(buffer, 0, bytesRead));
                     }
                     catch (Exception e) {
-                        // TODO: Leave room
                         Disconnect();
                     }
                 }

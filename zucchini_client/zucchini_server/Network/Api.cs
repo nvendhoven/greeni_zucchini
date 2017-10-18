@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using zucchini_server.Controller;
 
 namespace zucchini_server.Network
 {
@@ -41,6 +42,15 @@ namespace zucchini_server.Network
                 case "room/start":
                     StartGame(load.data);
                     break;
+                case "game/bell/correct": //TODO: When bell hit is correct
+
+                    break;
+                case "game/bell/wrong": //TODO: When bell hit is wrong
+
+                    break;
+                case "game/leave":
+                    LeaveGame(load.data);
+                    break;
                 default:
                     Program.Print(PrintType.ERR, $"incorrect load id was given! : \"{load.id}\"");
                     break;
@@ -53,14 +63,42 @@ namespace zucchini_server.Network
                 {
                     r.InGame = true;
 
+                    var game = new Game(Server.Get(), r.Players);
+
                     var send = new JObject{
                                     {"id","room/start"},
                                     {"data" , new JObject{
-                                        {"roomUuid", r.Uuid}
+                                        {"gameUuid", game.Uuid}
                                     }}
                                 };
 
+                    foreach (Player p in r.Players)
+                    {
+                        p.InGame = true;
+                    }
+
+                    Server.Get().Games.Add(game);
                     Server.Get().SendToAllPlayersInRoom(r, send);
+
+                    game.Start();
+
+                    Program.Print(PrintType.ACK, $"game started with id {game.Uuid}");
+                }
+            }
+        }
+
+        void LeaveGame(dynamic data) {
+            foreach (Game g in Server.Get().Games)
+            {
+                if (g.Uuid == $"{data.gameUuid}")
+                {
+                    foreach (Player p in g.Players)
+                    {
+                        if (p.Uuid == $"{data.playerUuid}")
+                        {
+                            g.PlayerLeave(p);
+                        }
+                    }
                 }
             }
         }

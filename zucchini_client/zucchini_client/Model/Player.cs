@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace zucchini_client.Model
 {
-    class Player
+    public class Player
     {
 
         public string Uuid { get; set; }

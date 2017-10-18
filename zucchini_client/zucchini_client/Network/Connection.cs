@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace zucchini_client.Network
 {
-    class Connection
+    public class Connection
     {
 
         private IServerListener _server;
@@ -62,6 +62,7 @@ namespace zucchini_client.Network
                     int bytesRead = _stream.Read(bytesToRead, 0, _client.ReceiveBufferSize);
 
                     _server.OnDataReceived(JObject.Parse(Encoding.ASCII.GetString(bytesToRead, 0, bytesRead)));
+
                 }
             }).Start();
         }
