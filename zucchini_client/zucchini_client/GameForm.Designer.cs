@@ -28,15 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pb_player3_deck = new System.Windows.Forms.PictureBox();
-            this.pb_player4_deck = new System.Windows.Forms.PictureBox();
-            this.pb_player2_deck = new System.Windows.Forms.PictureBox();
-            this.pb_player1_deck = new System.Windows.Forms.PictureBox();
-            this.pb_bell = new System.Windows.Forms.PictureBox();
-            this.pb_player2_currentcard = new System.Windows.Forms.PictureBox();
-            this.pb_player3_currentcard = new System.Windows.Forms.PictureBox();
-            this.pb_player4_currentcard = new System.Windows.Forms.PictureBox();
-            this.pb_player1_currentcard = new System.Windows.Forms.PictureBox();
             this.lb_player3_name = new System.Windows.Forms.Label();
             this.lb_player4_name = new System.Windows.Forms.Label();
             this.lb_player2_name = new System.Windows.Forms.Label();
@@ -45,94 +36,105 @@
             this.lb_player1_cards = new System.Windows.Forms.Label();
             this.lb_player4_cards = new System.Windows.Forms.Label();
             this.lb_player3_cards = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player3_deck)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player4_deck)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player2_deck)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player1_deck)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_bell)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player2_currentcard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player3_currentcard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player4_currentcard)).BeginInit();
+            this.pb_player1_currentcard = new System.Windows.Forms.PictureBox();
+            this.pb_player4_currentcard = new System.Windows.Forms.PictureBox();
+            this.pb_player3_currentcard = new System.Windows.Forms.PictureBox();
+            this.pb_player2_currentcard = new System.Windows.Forms.PictureBox();
+            this.pb_bell = new System.Windows.Forms.PictureBox();
+            this.pb_player1_deck = new System.Windows.Forms.PictureBox();
+            this.pb_player2_deck = new System.Windows.Forms.PictureBox();
+            this.pb_player4_deck = new System.Windows.Forms.PictureBox();
+            this.pb_player3_deck = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_player1_currentcard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player4_currentcard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player3_currentcard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player2_currentcard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_bell)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player1_deck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player2_deck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player4_deck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player3_deck)).BeginInit();
             this.SuspendLayout();
             // 
-            // pb_player3_deck
+            // lb_player3_name
             // 
-            this.pb_player3_deck.Location = new System.Drawing.Point(32, 12);
-            this.pb_player3_deck.Name = "pb_player3_deck";
-            this.pb_player3_deck.Size = new System.Drawing.Size(100, 146);
-            this.pb_player3_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_player3_deck.TabIndex = 0;
-            this.pb_player3_deck.TabStop = false;
-            this.pb_player3_deck.WaitOnLoad = true;
+            this.lb_player3_name.AutoSize = true;
+            this.lb_player3_name.BackColor = System.Drawing.Color.Transparent;
+            this.lb_player3_name.Location = new System.Drawing.Point(32, 175);
+            this.lb_player3_name.Name = "lb_player3_name";
+            this.lb_player3_name.Size = new System.Drawing.Size(55, 17);
+            this.lb_player3_name.TabIndex = 9;
+            this.lb_player3_name.Text = "player3";
             // 
-            // pb_player4_deck
+            // lb_player4_name
             // 
-            this.pb_player4_deck.Location = new System.Drawing.Point(654, 25);
-            this.pb_player4_deck.Name = "pb_player4_deck";
-            this.pb_player4_deck.Size = new System.Drawing.Size(146, 100);
-            this.pb_player4_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_player4_deck.TabIndex = 1;
-            this.pb_player4_deck.TabStop = false;
-            this.pb_player4_deck.WaitOnLoad = true;
+            this.lb_player4_name.AutoSize = true;
+            this.lb_player4_name.BackColor = System.Drawing.Color.Transparent;
+            this.lb_player4_name.Location = new System.Drawing.Point(651, 141);
+            this.lb_player4_name.Name = "lb_player4_name";
+            this.lb_player4_name.Size = new System.Drawing.Size(55, 17);
+            this.lb_player4_name.TabIndex = 10;
+            this.lb_player4_name.Text = "player4";
             // 
-            // pb_player2_deck
+            // lb_player2_name
             // 
-            this.pb_player2_deck.Location = new System.Drawing.Point(32, 581);
-            this.pb_player2_deck.Name = "pb_player2_deck";
-            this.pb_player2_deck.Size = new System.Drawing.Size(146, 100);
-            this.pb_player2_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_player2_deck.TabIndex = 2;
-            this.pb_player2_deck.TabStop = false;
-            this.pb_player2_deck.WaitOnLoad = true;
+            this.lb_player2_name.AutoSize = true;
+            this.lb_player2_name.BackColor = System.Drawing.Color.Transparent;
+            this.lb_player2_name.Location = new System.Drawing.Point(32, 544);
+            this.lb_player2_name.Name = "lb_player2_name";
+            this.lb_player2_name.Size = new System.Drawing.Size(55, 17);
+            this.lb_player2_name.TabIndex = 11;
+            this.lb_player2_name.Text = "player2";
             // 
-            // pb_player1_deck
+            // lb_player1_name
             // 
-            this.pb_player1_deck.Location = new System.Drawing.Point(700, 544);
-            this.pb_player1_deck.Name = "pb_player1_deck";
-            this.pb_player1_deck.Size = new System.Drawing.Size(100, 146);
-            this.pb_player1_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_player1_deck.TabIndex = 3;
-            this.pb_player1_deck.TabStop = false;
-            this.pb_player1_deck.WaitOnLoad = true;
+            this.lb_player1_name.AutoSize = true;
+            this.lb_player1_name.BackColor = System.Drawing.Color.Transparent;
+            this.lb_player1_name.Location = new System.Drawing.Point(697, 511);
+            this.lb_player1_name.Name = "lb_player1_name";
+            this.lb_player1_name.Size = new System.Drawing.Size(55, 17);
+            this.lb_player1_name.TabIndex = 12;
+            this.lb_player1_name.Text = "player1";
             // 
-            // pb_bell
+            // lb_player2_cards
             // 
-            this.pb_bell.Location = new System.Drawing.Point(349, 278);
-            this.pb_bell.Name = "pb_bell";
-            this.pb_bell.Size = new System.Drawing.Size(100, 100);
-            this.pb_bell.TabIndex = 4;
-            this.pb_bell.TabStop = false;
+            this.lb_player2_cards.AutoSize = true;
+            this.lb_player2_cards.BackColor = System.Drawing.Color.Transparent;
+            this.lb_player2_cards.Location = new System.Drawing.Point(145, 544);
+            this.lb_player2_cards.Name = "lb_player2_cards";
+            this.lb_player2_cards.Size = new System.Drawing.Size(24, 17);
+            this.lb_player2_cards.TabIndex = 13;
+            this.lb_player2_cards.Text = "23";
             // 
-            // pb_player2_currentcard
+            // lb_player1_cards
             // 
-            this.pb_player2_currentcard.Location = new System.Drawing.Point(114, 278);
-            this.pb_player2_currentcard.Name = "pb_player2_currentcard";
-            this.pb_player2_currentcard.Size = new System.Drawing.Size(146, 100);
-            this.pb_player2_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_player2_currentcard.TabIndex = 5;
-            this.pb_player2_currentcard.TabStop = false;
-            this.pb_player2_currentcard.WaitOnLoad = true;
+            this.lb_player1_cards.AutoSize = true;
+            this.lb_player1_cards.BackColor = System.Drawing.Color.Transparent;
+            this.lb_player1_cards.Location = new System.Drawing.Point(776, 511);
+            this.lb_player1_cards.Name = "lb_player1_cards";
+            this.lb_player1_cards.Size = new System.Drawing.Size(24, 17);
+            this.lb_player1_cards.TabIndex = 13;
+            this.lb_player1_cards.Text = "23";
             // 
-            // pb_player3_currentcard
+            // lb_player4_cards
             // 
-            this.pb_player3_currentcard.Location = new System.Drawing.Point(349, 76);
-            this.pb_player3_currentcard.Name = "pb_player3_currentcard";
-            this.pb_player3_currentcard.Size = new System.Drawing.Size(100, 146);
-            this.pb_player3_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_player3_currentcard.TabIndex = 6;
-            this.pb_player3_currentcard.TabStop = false;
-            this.pb_player3_currentcard.WaitOnLoad = true;
+            this.lb_player4_cards.AutoSize = true;
+            this.lb_player4_cards.BackColor = System.Drawing.Color.Transparent;
+            this.lb_player4_cards.Location = new System.Drawing.Point(776, 141);
+            this.lb_player4_cards.Name = "lb_player4_cards";
+            this.lb_player4_cards.Size = new System.Drawing.Size(24, 17);
+            this.lb_player4_cards.TabIndex = 13;
+            this.lb_player4_cards.Text = "23";
             // 
-            // pb_player4_currentcard
+            // lb_player3_cards
             // 
-            this.pb_player4_currentcard.Location = new System.Drawing.Point(521, 278);
-            this.pb_player4_currentcard.Name = "pb_player4_currentcard";
-            this.pb_player4_currentcard.Size = new System.Drawing.Size(146, 100);
-            this.pb_player4_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_player4_currentcard.TabIndex = 7;
-            this.pb_player4_currentcard.TabStop = false;
-            this.pb_player4_currentcard.WaitOnLoad = true;
+            this.lb_player3_cards.AutoSize = true;
+            this.lb_player3_cards.BackColor = System.Drawing.Color.Transparent;
+            this.lb_player3_cards.Location = new System.Drawing.Point(145, 175);
+            this.lb_player3_cards.Name = "lb_player3_cards";
+            this.lb_player3_cards.Size = new System.Drawing.Size(24, 17);
+            this.lb_player3_cards.TabIndex = 13;
+            this.lb_player3_cards.Text = "23";
             // 
             // pb_player1_currentcard
             // 
@@ -144,82 +146,101 @@
             this.pb_player1_currentcard.TabStop = false;
             this.pb_player1_currentcard.WaitOnLoad = true;
             // 
-            // lb_player3_name
+            // pb_player4_currentcard
             // 
-            this.lb_player3_name.AutoSize = true;
-            this.lb_player3_name.Location = new System.Drawing.Point(32, 175);
-            this.lb_player3_name.Name = "lb_player3_name";
-            this.lb_player3_name.Size = new System.Drawing.Size(55, 17);
-            this.lb_player3_name.TabIndex = 9;
-            this.lb_player3_name.Text = "player3";
+            this.pb_player4_currentcard.Location = new System.Drawing.Point(521, 278);
+            this.pb_player4_currentcard.Name = "pb_player4_currentcard";
+            this.pb_player4_currentcard.Size = new System.Drawing.Size(146, 100);
+            this.pb_player4_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_player4_currentcard.TabIndex = 7;
+            this.pb_player4_currentcard.TabStop = false;
+            this.pb_player4_currentcard.WaitOnLoad = true;
             // 
-            // lb_player4_name
+            // pb_player3_currentcard
             // 
-            this.lb_player4_name.AutoSize = true;
-            this.lb_player4_name.Location = new System.Drawing.Point(651, 141);
-            this.lb_player4_name.Name = "lb_player4_name";
-            this.lb_player4_name.Size = new System.Drawing.Size(55, 17);
-            this.lb_player4_name.TabIndex = 10;
-            this.lb_player4_name.Text = "player4";
+            this.pb_player3_currentcard.Location = new System.Drawing.Point(349, 76);
+            this.pb_player3_currentcard.Name = "pb_player3_currentcard";
+            this.pb_player3_currentcard.Size = new System.Drawing.Size(100, 146);
+            this.pb_player3_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_player3_currentcard.TabIndex = 6;
+            this.pb_player3_currentcard.TabStop = false;
+            this.pb_player3_currentcard.WaitOnLoad = true;
             // 
-            // lb_player2_name
+            // pb_player2_currentcard
             // 
-            this.lb_player2_name.AutoSize = true;
-            this.lb_player2_name.Location = new System.Drawing.Point(32, 544);
-            this.lb_player2_name.Name = "lb_player2_name";
-            this.lb_player2_name.Size = new System.Drawing.Size(55, 17);
-            this.lb_player2_name.TabIndex = 11;
-            this.lb_player2_name.Text = "player2";
+            this.pb_player2_currentcard.Location = new System.Drawing.Point(114, 278);
+            this.pb_player2_currentcard.Name = "pb_player2_currentcard";
+            this.pb_player2_currentcard.Size = new System.Drawing.Size(146, 100);
+            this.pb_player2_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_player2_currentcard.TabIndex = 5;
+            this.pb_player2_currentcard.TabStop = false;
+            this.pb_player2_currentcard.WaitOnLoad = true;
             // 
-            // lb_player1_name
+            // pb_bell
             // 
-            this.lb_player1_name.AutoSize = true;
-            this.lb_player1_name.Location = new System.Drawing.Point(697, 511);
-            this.lb_player1_name.Name = "lb_player1_name";
-            this.lb_player1_name.Size = new System.Drawing.Size(55, 17);
-            this.lb_player1_name.TabIndex = 12;
-            this.lb_player1_name.Text = "player1";
+            this.pb_bell.BackColor = System.Drawing.Color.Transparent;
+            this.pb_bell.Image = global::zucchini_client.Properties.Resources.bell;
+            this.pb_bell.Location = new System.Drawing.Point(335, 254);
+            this.pb_bell.Name = "pb_bell";
+            this.pb_bell.Size = new System.Drawing.Size(136, 136);
+            this.pb_bell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_bell.TabIndex = 4;
+            this.pb_bell.TabStop = false;
             // 
-            // lb_player2_cards
+            // pb_player1_deck
             // 
-            this.lb_player2_cards.AutoSize = true;
-            this.lb_player2_cards.Location = new System.Drawing.Point(86, 624);
-            this.lb_player2_cards.Name = "lb_player2_cards";
-            this.lb_player2_cards.Size = new System.Drawing.Size(24, 17);
-            this.lb_player2_cards.TabIndex = 13;
-            this.lb_player2_cards.Text = "23";
+            this.pb_player1_deck.BackColor = System.Drawing.Color.Transparent;
+            this.pb_player1_deck.Image = global::zucchini_client.Properties.Resources.achterkantkaart;
+            this.pb_player1_deck.Location = new System.Drawing.Point(700, 544);
+            this.pb_player1_deck.Name = "pb_player1_deck";
+            this.pb_player1_deck.Size = new System.Drawing.Size(100, 146);
+            this.pb_player1_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_player1_deck.TabIndex = 3;
+            this.pb_player1_deck.TabStop = false;
+            this.pb_player1_deck.WaitOnLoad = true;
             // 
-            // lb_player1_cards
+            // pb_player2_deck
             // 
-            this.lb_player1_cards.AutoSize = true;
-            this.lb_player1_cards.Location = new System.Drawing.Point(741, 609);
-            this.lb_player1_cards.Name = "lb_player1_cards";
-            this.lb_player1_cards.Size = new System.Drawing.Size(24, 17);
-            this.lb_player1_cards.TabIndex = 14;
-            this.lb_player1_cards.Text = "23";
+            this.pb_player2_deck.BackColor = System.Drawing.Color.Transparent;
+            this.pb_player2_deck.Image = global::zucchini_client.Properties.Resources.achterkantkaart;
+            this.pb_player2_deck.Location = new System.Drawing.Point(32, 581);
+            this.pb_player2_deck.Name = "pb_player2_deck";
+            this.pb_player2_deck.Size = new System.Drawing.Size(146, 100);
+            this.pb_player2_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_player2_deck.TabIndex = 2;
+            this.pb_player2_deck.TabStop = false;
+            this.pb_player2_deck.WaitOnLoad = true;
             // 
-            // lb_player4_cards
+            // pb_player4_deck
             // 
-            this.lb_player4_cards.AutoSize = true;
-            this.lb_player4_cards.Location = new System.Drawing.Point(718, 63);
-            this.lb_player4_cards.Name = "lb_player4_cards";
-            this.lb_player4_cards.Size = new System.Drawing.Size(24, 17);
-            this.lb_player4_cards.TabIndex = 15;
-            this.lb_player4_cards.Text = "23";
+            this.pb_player4_deck.BackColor = System.Drawing.Color.Transparent;
+            this.pb_player4_deck.Image = global::zucchini_client.Properties.Resources.achterkantkaart;
+            this.pb_player4_deck.Location = new System.Drawing.Point(654, 25);
+            this.pb_player4_deck.Name = "pb_player4_deck";
+            this.pb_player4_deck.Size = new System.Drawing.Size(146, 100);
+            this.pb_player4_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_player4_deck.TabIndex = 1;
+            this.pb_player4_deck.TabStop = false;
+            this.pb_player4_deck.WaitOnLoad = true;
             // 
-            // lb_player3_cards
+            // pb_player3_deck
             // 
-            this.lb_player3_cards.AutoSize = true;
-            this.lb_player3_cards.Location = new System.Drawing.Point(72, 76);
-            this.lb_player3_cards.Name = "lb_player3_cards";
-            this.lb_player3_cards.Size = new System.Drawing.Size(24, 17);
-            this.lb_player3_cards.TabIndex = 16;
-            this.lb_player3_cards.Text = "23";
+            this.pb_player3_deck.BackColor = System.Drawing.Color.Transparent;
+            this.pb_player3_deck.Image = global::zucchini_client.Properties.Resources.achterkantkaart;
+            this.pb_player3_deck.Location = new System.Drawing.Point(32, 12);
+            this.pb_player3_deck.Name = "pb_player3_deck";
+            this.pb_player3_deck.Size = new System.Drawing.Size(100, 146);
+            this.pb_player3_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_player3_deck.TabIndex = 0;
+            this.pb_player3_deck.TabStop = false;
+            this.pb_player3_deck.WaitOnLoad = true;
             // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Menu;
+            this.BackgroundImage = global::zucchini_client.Properties.Resources.Knipsel;
             this.ClientSize = new System.Drawing.Size(829, 702);
             this.Controls.Add(this.lb_player3_cards);
             this.Controls.Add(this.lb_player4_cards);
@@ -244,15 +265,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player3_deck)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player4_deck)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player2_deck)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player1_deck)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_bell)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player2_currentcard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player3_currentcard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_player4_currentcard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_player1_currentcard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player4_currentcard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player3_currentcard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player2_currentcard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_bell)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player1_deck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player2_deck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player4_deck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_player3_deck)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
