@@ -285,7 +285,10 @@ namespace zucchini_client
                     _api.RefreshRooms(_self);
                     break;
                 case "room/start":
-                    StartGame();
+                    if(_playersInRoom.Count > 1)
+                        StartGame();
+                    else
+                        MessageBox.Show($"Can't start game with only one player!");
                     break;
             }
         }
