@@ -12,12 +12,14 @@ namespace zucchini_client.Model
         public string Uuid { get; set; }
         public Player Host { get; set; }
         public int Amount { get; set; }
+        public bool InGame { get; set; }
 
-        public Room(string name, string uuid, int amount)
+        public Room(string name, string uuid, int amount, bool inGame)
         {
             Uuid = uuid;
             Name = name;
             Amount = amount;
+            InGame = inGame;
         }
 
         public Room(string name, Player host)

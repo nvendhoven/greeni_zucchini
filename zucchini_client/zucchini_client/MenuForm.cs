@@ -71,7 +71,11 @@ namespace zucchini_client
         private void UpdateRoomList() {
             lb_rooms.Invoke(new Action(() => lb_rooms.Items.Clear()));
             foreach (Room r in _rooms) {
-                lb_rooms.Invoke(new Action(() => lb_rooms.Items.Add(new ListBoxItem { Name = $"{r.Name} {r.Amount}/{MAX_PLAYERS_IN_ROOM}", Uuid = r.Uuid })));
+                var game = "";
+                if (r.InGame)
+                    game = "[In Game]";
+
+                lb_rooms.Invoke(new Action(() => lb_rooms.Items.Add(new ListBoxItem { Name = $"{game} {r.Name} {r.Amount}/{MAX_PLAYERS_IN_ROOM}", Uuid = r.Uuid })));
             }  
         }
 
@@ -174,10 +178,16 @@ namespace zucchini_client
             {
                 if (lb_rooms.SelectedIndex >= 0 && lb_rooms.SelectedIndex < _rooms.Count)
                 {
-                    _api.JoinRoom(((ListBoxItem)lb_rooms.SelectedItem).Uuid, _self);
-
                     foreach(Room r in _rooms) {
+
                         if (((ListBoxItem)lb_rooms.SelectedItem).Uuid == r.Uuid) {
+                            if (r.InGame)
+                            {
+                                MessageBox.Show($"This room is already in game!");
+                                return;
+                            }
+
+                            _api.JoinRoom(((ListBoxItem)lb_rooms.SelectedItem).Uuid, _self);
                             GotoRoom(r);
                             _api.RefreshRooms(_self);
                         }
@@ -251,7 +261,7 @@ namespace zucchini_client
                 case "room/refresh":
                     _rooms.Clear();
                     foreach (dynamic room in load.data.rooms) {
-                        _rooms.Add(new Room($"{room.name}", $"{room.uuid}", int.Parse($"{room.amount}")));
+                        _rooms.Add(new Room($"{room.name}", $"{room.uuid}", int.Parse($"{room.amount}"), bool.Parse($"{room.inGame}")));
                     }
                     UpdateRoomList();
                     break;

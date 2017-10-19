@@ -189,30 +189,46 @@ namespace zucchini_server.Network
                     {
                         if (r.Uuid == $"{data.roomUuid}")
                         {
-                            if (r.Players.Count < Server.ROOM_SIZE)
+
+                            if (r.InGame)
                             {
                                 var send = new JObject{
+                                        {"id","room/join/failed"},
+                                        {"data" , new JObject{
+                                            {"reason", "Room is in game!"}
+                                        }}
+                                    };
+                                p.Send(send);
+                                return;
+                            }
+                            else
+                            {
+                                if (r.Players.Count < Server.ROOM_SIZE)
+                                {
+                                    var send = new JObject{
                                         {"id","room/join"},
                                         {"data" , new JObject{
                                             {"playerName", p.Name}
                                         }}
                                 };
 
-                                Server.Get().SendToAllPlayersInRoom(r, send);
+                                    Server.Get().SendToAllPlayersInRoom(r, send);
 
-                                r.Players.Add(p);
-                                Program.Print(PrintType.ACK, $"{p.Name} joined room {r.Name}");
-                                return;
-                            }
-                            else {
-                                var send2 = new JObject{
-                                    {"id","room/join/failed"},
-                                    {"data" , new JObject{
-                                        {"reason", "Room is full!"}
-                                    }}
-                                };
-                                p.Send(send2);
-                                return;
+                                    r.Players.Add(p);
+                                    Program.Print(PrintType.ACK, $"{p.Name} joined room {r.Name}");
+                                    return;
+                                }
+                                else
+                                {
+                                    var send2 = new JObject{
+                                        {"id","room/join/failed"},
+                                        {"data" , new JObject{
+                                            {"reason", "Room is full!"}
+                                        }}
+                                    };
+                                    p.Send(send2);
+                                    return;
+                                }
                             }
                         }
                     }
@@ -327,7 +343,8 @@ namespace zucchini_server.Network
                         jrooms.Add(new JObject {
                             {"name", r.Name},
                             {"uuid", r.Uuid},
-                            {"amount", r.Players.Count}
+                            {"amount", r.Players.Count},
+                            {"inGame", r.InGame }
                         });
                     }
 
