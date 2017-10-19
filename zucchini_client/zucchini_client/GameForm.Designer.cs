@@ -108,46 +108,54 @@
             // lb_player2_cards
             // 
             this.lb_player2_cards.BackColor = System.Drawing.Color.Transparent;
-            this.lb_player2_cards.Location = new System.Drawing.Point(106, 481);
+            this.lb_player2_cards.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_player2_cards.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lb_player2_cards.Location = new System.Drawing.Point(11, 496);
             this.lb_player2_cards.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_player2_cards.Name = "lb_player2_cards";
-            this.lb_player2_cards.Size = new System.Drawing.Size(46, 13);
+            this.lb_player2_cards.Size = new System.Drawing.Size(146, 100);
             this.lb_player2_cards.TabIndex = 13;
             this.lb_player2_cards.Text = "23";
-            this.lb_player2_cards.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lb_player2_cards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lb_player1_cards
             // 
             this.lb_player1_cards.BackColor = System.Drawing.Color.Transparent;
-            this.lb_player1_cards.Location = new System.Drawing.Point(549, 435);
+            this.lb_player1_cards.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_player1_cards.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lb_player1_cards.Location = new System.Drawing.Point(500, 450);
             this.lb_player1_cards.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_player1_cards.Name = "lb_player1_cards";
-            this.lb_player1_cards.Size = new System.Drawing.Size(46, 13);
+            this.lb_player1_cards.Size = new System.Drawing.Size(100, 146);
             this.lb_player1_cards.TabIndex = 13;
             this.lb_player1_cards.Text = "23";
-            this.lb_player1_cards.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lb_player1_cards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lb_player4_cards
             // 
             this.lb_player4_cards.BackColor = System.Drawing.Color.Transparent;
-            this.lb_player4_cards.Location = new System.Drawing.Point(560, 115);
+            this.lb_player4_cards.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_player4_cards.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lb_player4_cards.Location = new System.Drawing.Point(465, 10);
             this.lb_player4_cards.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_player4_cards.Name = "lb_player4_cards";
-            this.lb_player4_cards.Size = new System.Drawing.Size(46, 13);
+            this.lb_player4_cards.Size = new System.Drawing.Size(146, 100);
             this.lb_player4_cards.TabIndex = 13;
             this.lb_player4_cards.Text = "23";
-            this.lb_player4_cards.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lb_player4_cards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lb_player3_cards
             // 
             this.lb_player3_cards.BackColor = System.Drawing.Color.Transparent;
-            this.lb_player3_cards.Location = new System.Drawing.Point(77, 158);
+            this.lb_player3_cards.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_player3_cards.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lb_player3_cards.Location = new System.Drawing.Point(24, 9);
             this.lb_player3_cards.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_player3_cards.Name = "lb_player3_cards";
-            this.lb_player3_cards.Size = new System.Drawing.Size(46, 13);
+            this.lb_player3_cards.Size = new System.Drawing.Size(100, 147);
             this.lb_player3_cards.TabIndex = 13;
             this.lb_player3_cards.Text = "23";
-            this.lb_player3_cards.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lb_player3_cards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pb_player1_currentcard
             // 

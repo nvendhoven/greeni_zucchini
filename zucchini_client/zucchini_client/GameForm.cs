@@ -22,6 +22,10 @@ namespace zucchini_client
 
         private List<Player> _players;
 
+        const int BEGINCARDS = 50;
+        private int[] _score = { BEGINCARDS, BEGINCARDS, BEGINCARDS, BEGINCARDS };
+        private int _numberOfCardsPlayedInCurrentRound = 0;
+
         public GameForm(string uuid, List<Player> players, Lobby menu)
         {
             InitializeComponent();
@@ -39,6 +43,35 @@ namespace zucchini_client
         public void InitUI() {
             this.Invoke(new MethodInvoker(() =>
             {
+                lb_player1_cards.Text = BEGINCARDS.ToString();
+                lb_player2_cards.Text = BEGINCARDS.ToString();
+                lb_player3_cards.Text = BEGINCARDS.ToString();
+                lb_player4_cards.Text = BEGINCARDS.ToString();
+
+                var pos = this.PointToScreen(lb_player1_cards.Location);
+                pos = pb_player1_deck.PointToClient(pos);
+
+                lb_player1_cards.Parent = pb_player1_deck;
+                lb_player1_cards.Location = pos;
+
+                var pos2 = this.PointToScreen(lb_player2_cards.Location);
+                pos2 = pb_player2_deck.PointToClient(pos2);
+
+                lb_player2_cards.Parent = pb_player2_deck;
+                lb_player2_cards.Location = pos2;
+
+                var pos3 = this.PointToScreen(lb_player3_cards.Location);
+                pos3 = pb_player3_deck.PointToClient(pos3);
+
+                lb_player3_cards.Parent = pb_player3_deck;
+                lb_player3_cards.Location = pos3;
+
+                var pos4 = this.PointToScreen(lb_player4_cards.Location);
+                pos4 = pb_player4_deck.PointToClient(pos4);
+
+                lb_player4_cards.Parent = pb_player4_deck;
+                lb_player4_cards.Location = pos4;
+
                 pb_player1_currentcard.Visible = false;
                 pb_player2_currentcard.Visible = false;
 
@@ -66,7 +99,7 @@ namespace zucchini_client
                         lb_player3_cards.Visible = true;
                         lb_player3_name.Visible = true;
                         pb_player3_deck.Visible = true;
- 
+
 
                         lb_player3_name.Text = _players.ElementAt(i).Name;
                     }
@@ -80,7 +113,7 @@ namespace zucchini_client
                     }
                 }
             }));
-        }
+        } // TODO: check if player still active
 
         private void NewRound()
         {
@@ -202,32 +235,37 @@ namespace zucchini_client
 
             this.Invoke(new MethodInvoker(() =>
             {
+                _numberOfCardsPlayedInCurrentRound++;
                 if (_players.IndexOf(player) == 0)
                 {
                     pb_player1_currentcard.Image = image;
                     pb_player1_currentcard.Visible = true;
+                    AddScore(-1, player);
                 }
                 else if (_players.IndexOf(player) == 1)
                 {
                     pb_player2_currentcard.Image = RotateImage(image, 90);
                     pb_player2_currentcard.Visible = true;
+                    AddScore(-1, player);
                 }
                 else if (_players.IndexOf(player) == 2)
                 {
                     pb_player3_currentcard.Image = RotateImage(image, 180);
                     pb_player3_currentcard.Visible = true;
+                    AddScore(-1, player);
                 }
                 else if (_players.IndexOf(player) == 3)
                 {
                     pb_player4_currentcard.Image = RotateImage(image, 270);
                     pb_player4_currentcard.Visible = true;
+                    AddScore(-1, player);
                 }
             }));
         }
 
         public void OnDataReceived(dynamic load) {
             switch ($"{load.id}")
-            { 
+            {
                 case "game/card":
                     foreach (Player p in _players) {
                         if (p.Uuid == $"{load.data.playerUuid}") {
@@ -241,9 +279,16 @@ namespace zucchini_client
                     {
                         if (p.Uuid == $"{load.data.playerUuid}")
                         {
-                            ShowNote($"{p.Name} pressed! Correct: {load.data.isCorrect}");
-                            if (bool.Parse($"{load.data.isCorrect}")) {
+                            if (bool.Parse($"{load.data.isCorrect}"))
+                            {
+                                ShowNote($"{p.Name} pressed and won { _numberOfCardsPlayedInCurrentRound} cards!");
+                                AddScore(_numberOfCardsPlayedInCurrentRound, p);
+                                _numberOfCardsPlayedInCurrentRound = 0;
                                 NewRound();
+                            }
+                            else {
+                                ShowNote($"{p.Name} pressed incorrectly!");
+                                // TODO give cards to other
                             }
                             return;
                         }
@@ -253,7 +298,35 @@ namespace zucchini_client
 
                     break;
             }
-         }
+        }
+
+        private void AddScore(int amount, Player player) {
+            this.Invoke(new MethodInvoker(() =>
+            {
+                if (_players.IndexOf(player) == 0)
+                {
+                    _score[0] += amount;
+                }
+                else if (_players.IndexOf(player) == 1)
+                {
+                    _score[1] += amount;
+                }
+                else if (_players.IndexOf(player) == 2)
+                {
+                    _score[2] += amount;
+                }
+                else if (_players.IndexOf(player) == 3)
+                {
+                    _score[3] += amount;
+                }
+
+                lb_player1_cards.Text = _score[0].ToString();
+                lb_player2_cards.Text = _score[1].ToString();
+                lb_player3_cards.Text = _score[2].ToString();
+                lb_player4_cards.Text = _score[3].ToString();
+            }));
+        }
+    
 
         private void ShowNote(string text) {
             new Thread(() => {
