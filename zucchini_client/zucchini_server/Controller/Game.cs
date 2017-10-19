@@ -87,7 +87,7 @@ namespace zucchini_server.Controller
                             }
                         }
                         catch (Exception e) {
-                            Program.Print(PrintType.ERR, $"error in game from room {Room.Name} - {e.StackTrace}");
+                            _turnPlayer = Players.First();
                         }
                     }
                 }

@@ -26,12 +26,14 @@ namespace zucchini_client
         private int[] _score = { BEGINCARDS, BEGINCARDS, BEGINCARDS, BEGINCARDS };
         private bool[] _active = { false, false, false, false };
         private int _numberOfCardsPlayedInCurrentRound = 0;
+        private string _selfUuid;
 
-        public GameForm(string uuid, List<Player> players, Lobby menu)
+        public GameForm(string selfUuid, string uuid, List<Player> players, Lobby menu)
         {
             InitializeComponent();
             Uuid = uuid;
             _players = players;
+            _selfUuid = selfUuid;
             _menu = menu;
         }
 
@@ -287,8 +289,9 @@ namespace zucchini_client
                             {
                                 ShowNote($"{p.Name} pressed and won { _numberOfCardsPlayedInCurrentRound} cards!");
                                 AddScore(_numberOfCardsPlayedInCurrentRound, p);
-                                _numberOfCardsPlayedInCurrentRound = 0;
+                                _numberOfCardsPlayedInCurrentRound = 0; 
                                 NewRound();
+                                CheckLose();
                             }
                             else {
                                 ShowNote($"{p.Name} pressed incorrectly!");
@@ -312,6 +315,18 @@ namespace zucchini_client
                     MessageBox.Show($"You won!");
                     _menu.LeaveGame();
                     break;
+            }
+        }
+
+        private void CheckLose() {
+            foreach (Player p in _players)
+            {
+                if (p.Uuid == _selfUuid)
+                {
+                    if (_score[_players.IndexOf(p)] <= 0) {
+                        _menu.LeaveGame();
+                    }
+                }
             }
         }
 

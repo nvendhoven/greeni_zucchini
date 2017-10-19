@@ -134,7 +134,7 @@ namespace zucchini_client
         private void StartGame(string gameUuid) {
             this.Invoke(new MethodInvoker(() =>
             {
-                Game = new GameForm(gameUuid, _playersInRoom, this);
+                Game = new GameForm(_self.Uuid, gameUuid, _playersInRoom, this);
                 Game.Show();
                 Hide();
             }));
