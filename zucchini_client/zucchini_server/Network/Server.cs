@@ -39,7 +39,7 @@ namespace zucchini_server.Network
         private Server() {
             _api = new Api();
 
-            _server = new TcpListener(GetLocalIPAddress(), 80);
+            _server = new TcpListener(GetLocalIPAddress(), 8080);
             _server.Start();
 
             Program.Print(PrintType.SUCC, $" Server started on ip: {GetLocalIPAddress().ToString()}");
