@@ -22,7 +22,7 @@ namespace zucchini_client
 
         private List<Player> _players;
 
-        const int BEGINCARDS = 50;
+        const int BEGINCARDS = 30;
         private int[] _score = { BEGINCARDS, BEGINCARDS, BEGINCARDS, BEGINCARDS };
         private int _numberOfCardsPlayedInCurrentRound = 0;
 

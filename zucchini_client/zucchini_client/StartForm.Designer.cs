@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartForm));
             this.tb_ip = new System.Windows.Forms.TextBox();
             this.tb_username = new System.Windows.Forms.TextBox();
             this.btn_connect = new System.Windows.Forms.Button();
@@ -40,26 +41,29 @@
             // tb_ip
             // 
             this.tb_ip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_ip.Location = new System.Drawing.Point(45, 210);
+            this.tb_ip.Location = new System.Drawing.Point(60, 258);
+            this.tb_ip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_ip.Name = "tb_ip";
-            this.tb_ip.Size = new System.Drawing.Size(214, 22);
+            this.tb_ip.Size = new System.Drawing.Size(284, 26);
             this.tb_ip.TabIndex = 0;
-            this.tb_ip.Click += new System.EventHandler(this.tb_ip_Click);
+            
             // 
             // tb_username
             // 
             this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_username.Location = new System.Drawing.Point(45, 270);
+            this.tb_username.Location = new System.Drawing.Point(60, 332);
+            this.tb_username.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(214, 22);
+            this.tb_username.Size = new System.Drawing.Size(284, 26);
             this.tb_username.TabIndex = 1;
-            this.tb_username.Click += new System.EventHandler(this.tb_username_Click);
+    
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(101, 313);
+            this.btn_connect.Location = new System.Drawing.Point(135, 385);
+            this.btn_connect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(100, 43);
+            this.btn_connect.Size = new System.Drawing.Size(133, 53);
             this.btn_connect.TabIndex = 2;
             this.btn_connect.Text = "CONNECT";
             this.btn_connect.UseVisualStyleBackColor = true;
@@ -68,36 +72,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 194);
+            this.label1.Location = new System.Drawing.Point(56, 239);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(75, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "IP address";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 254);
+            this.label2.Location = new System.Drawing.Point(56, 313);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Username";
             // 
             // pb_logo
             // 
             this.pb_logo.InitialImage = global::zucchini_client.Properties.Resources.zucchini;
-            this.pb_logo.Location = new System.Drawing.Point(45, 26);
+            this.pb_logo.Location = new System.Drawing.Point(60, 32);
+            this.pb_logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pb_logo.Name = "pb_logo";
-            this.pb_logo.Size = new System.Drawing.Size(214, 145);
+            this.pb_logo.Size = new System.Drawing.Size(285, 178);
             this.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_logo.TabIndex = 5;
             this.pb_logo.TabStop = false;
             // 
             // StartForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 380);
+            this.ClientSize = new System.Drawing.Size(411, 468);
             this.Controls.Add(this.pb_logo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -105,6 +112,8 @@
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.tb_ip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "StartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Greeni Zucchini";

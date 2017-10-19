@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             this.lb_player3_name = new System.Windows.Forms.Label();
             this.lb_player4_name = new System.Windows.Forms.Label();
             this.lb_player2_name = new System.Windows.Forms.Label();
@@ -62,10 +63,9 @@
             this.lb_player3_name.AutoSize = true;
             this.lb_player3_name.BackColor = System.Drawing.Color.Transparent;
             this.lb_player3_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_player3_name.Location = new System.Drawing.Point(24, 158);
-            this.lb_player3_name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_player3_name.Location = new System.Drawing.Point(32, 194);
             this.lb_player3_name.Name = "lb_player3_name";
-            this.lb_player3_name.Size = new System.Drawing.Size(48, 13);
+            this.lb_player3_name.Size = new System.Drawing.Size(62, 17);
             this.lb_player3_name.TabIndex = 9;
             this.lb_player3_name.Text = "player3";
             // 
@@ -74,10 +74,9 @@
             this.lb_player4_name.AutoSize = true;
             this.lb_player4_name.BackColor = System.Drawing.Color.Transparent;
             this.lb_player4_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_player4_name.Location = new System.Drawing.Point(462, 115);
-            this.lb_player4_name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_player4_name.Location = new System.Drawing.Point(616, 142);
             this.lb_player4_name.Name = "lb_player4_name";
-            this.lb_player4_name.Size = new System.Drawing.Size(48, 13);
+            this.lb_player4_name.Size = new System.Drawing.Size(62, 17);
             this.lb_player4_name.TabIndex = 10;
             this.lb_player4_name.Text = "player4";
             // 
@@ -86,10 +85,9 @@
             this.lb_player2_name.AutoSize = true;
             this.lb_player2_name.BackColor = System.Drawing.Color.Transparent;
             this.lb_player2_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_player2_name.Location = new System.Drawing.Point(11, 481);
-            this.lb_player2_name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_player2_name.Location = new System.Drawing.Point(15, 592);
             this.lb_player2_name.Name = "lb_player2_name";
-            this.lb_player2_name.Size = new System.Drawing.Size(48, 13);
+            this.lb_player2_name.Size = new System.Drawing.Size(62, 17);
             this.lb_player2_name.TabIndex = 11;
             this.lb_player2_name.Text = "player2";
             // 
@@ -98,10 +96,9 @@
             this.lb_player1_name.AutoSize = true;
             this.lb_player1_name.BackColor = System.Drawing.Color.Transparent;
             this.lb_player1_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_player1_name.Location = new System.Drawing.Point(497, 435);
-            this.lb_player1_name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_player1_name.Location = new System.Drawing.Point(663, 535);
             this.lb_player1_name.Name = "lb_player1_name";
-            this.lb_player1_name.Size = new System.Drawing.Size(48, 13);
+            this.lb_player1_name.Size = new System.Drawing.Size(62, 17);
             this.lb_player1_name.TabIndex = 12;
             this.lb_player1_name.Text = "player1";
             // 
@@ -110,10 +107,9 @@
             this.lb_player2_cards.BackColor = System.Drawing.Color.Transparent;
             this.lb_player2_cards.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_player2_cards.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lb_player2_cards.Location = new System.Drawing.Point(11, 496);
-            this.lb_player2_cards.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_player2_cards.Location = new System.Drawing.Point(15, 610);
             this.lb_player2_cards.Name = "lb_player2_cards";
-            this.lb_player2_cards.Size = new System.Drawing.Size(146, 100);
+            this.lb_player2_cards.Size = new System.Drawing.Size(195, 123);
             this.lb_player2_cards.TabIndex = 13;
             this.lb_player2_cards.Text = "23";
             this.lb_player2_cards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -123,10 +119,9 @@
             this.lb_player1_cards.BackColor = System.Drawing.Color.Transparent;
             this.lb_player1_cards.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_player1_cards.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lb_player1_cards.Location = new System.Drawing.Point(500, 450);
-            this.lb_player1_cards.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_player1_cards.Location = new System.Drawing.Point(667, 554);
             this.lb_player1_cards.Name = "lb_player1_cards";
-            this.lb_player1_cards.Size = new System.Drawing.Size(100, 146);
+            this.lb_player1_cards.Size = new System.Drawing.Size(133, 180);
             this.lb_player1_cards.TabIndex = 13;
             this.lb_player1_cards.Text = "23";
             this.lb_player1_cards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,10 +131,9 @@
             this.lb_player4_cards.BackColor = System.Drawing.Color.Transparent;
             this.lb_player4_cards.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_player4_cards.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lb_player4_cards.Location = new System.Drawing.Point(465, 10);
-            this.lb_player4_cards.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_player4_cards.Location = new System.Drawing.Point(620, 12);
             this.lb_player4_cards.Name = "lb_player4_cards";
-            this.lb_player4_cards.Size = new System.Drawing.Size(146, 100);
+            this.lb_player4_cards.Size = new System.Drawing.Size(195, 123);
             this.lb_player4_cards.TabIndex = 13;
             this.lb_player4_cards.Text = "23";
             this.lb_player4_cards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -149,20 +143,19 @@
             this.lb_player3_cards.BackColor = System.Drawing.Color.Transparent;
             this.lb_player3_cards.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_player3_cards.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lb_player3_cards.Location = new System.Drawing.Point(24, 9);
-            this.lb_player3_cards.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_player3_cards.Location = new System.Drawing.Point(32, 11);
             this.lb_player3_cards.Name = "lb_player3_cards";
-            this.lb_player3_cards.Size = new System.Drawing.Size(100, 147);
+            this.lb_player3_cards.Size = new System.Drawing.Size(133, 181);
             this.lb_player3_cards.TabIndex = 13;
             this.lb_player3_cards.Text = "23";
             this.lb_player3_cards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pb_player1_currentcard
             // 
-            this.pb_player1_currentcard.Location = new System.Drawing.Point(252, 389);
-            this.pb_player1_currentcard.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_player1_currentcard.Location = new System.Drawing.Point(336, 479);
+            this.pb_player1_currentcard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_player1_currentcard.Name = "pb_player1_currentcard";
-            this.pb_player1_currentcard.Size = new System.Drawing.Size(100, 146);
+            this.pb_player1_currentcard.Size = new System.Drawing.Size(133, 180);
             this.pb_player1_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_player1_currentcard.TabIndex = 8;
             this.pb_player1_currentcard.TabStop = false;
@@ -170,10 +163,10 @@
             // 
             // pb_player4_currentcard
             // 
-            this.pb_player4_currentcard.Location = new System.Drawing.Point(392, 255);
-            this.pb_player4_currentcard.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_player4_currentcard.Location = new System.Drawing.Point(523, 314);
+            this.pb_player4_currentcard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_player4_currentcard.Name = "pb_player4_currentcard";
-            this.pb_player4_currentcard.Size = new System.Drawing.Size(146, 100);
+            this.pb_player4_currentcard.Size = new System.Drawing.Size(195, 123);
             this.pb_player4_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_player4_currentcard.TabIndex = 7;
             this.pb_player4_currentcard.TabStop = false;
@@ -181,10 +174,10 @@
             // 
             // pb_player3_currentcard
             // 
-            this.pb_player3_currentcard.Location = new System.Drawing.Point(252, 76);
-            this.pb_player3_currentcard.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_player3_currentcard.Location = new System.Drawing.Point(336, 94);
+            this.pb_player3_currentcard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_player3_currentcard.Name = "pb_player3_currentcard";
-            this.pb_player3_currentcard.Size = new System.Drawing.Size(100, 146);
+            this.pb_player3_currentcard.Size = new System.Drawing.Size(133, 180);
             this.pb_player3_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_player3_currentcard.TabIndex = 6;
             this.pb_player3_currentcard.TabStop = false;
@@ -192,10 +185,10 @@
             // 
             // pb_player2_currentcard
             // 
-            this.pb_player2_currentcard.Location = new System.Drawing.Point(61, 255);
-            this.pb_player2_currentcard.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_player2_currentcard.Location = new System.Drawing.Point(81, 314);
+            this.pb_player2_currentcard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_player2_currentcard.Name = "pb_player2_currentcard";
-            this.pb_player2_currentcard.Size = new System.Drawing.Size(146, 100);
+            this.pb_player2_currentcard.Size = new System.Drawing.Size(195, 123);
             this.pb_player2_currentcard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_player2_currentcard.TabIndex = 5;
             this.pb_player2_currentcard.TabStop = false;
@@ -205,10 +198,10 @@
             // 
             this.pb_bell.BackColor = System.Drawing.Color.Transparent;
             this.pb_bell.Image = global::zucchini_client.Properties.Resources.bell;
-            this.pb_bell.Location = new System.Drawing.Point(252, 255);
-            this.pb_bell.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_bell.Location = new System.Drawing.Point(336, 314);
+            this.pb_bell.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_bell.Name = "pb_bell";
-            this.pb_bell.Size = new System.Drawing.Size(100, 100);
+            this.pb_bell.Size = new System.Drawing.Size(133, 123);
             this.pb_bell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_bell.TabIndex = 4;
             this.pb_bell.TabStop = false;
@@ -217,10 +210,10 @@
             // 
             this.pb_player1_deck.BackColor = System.Drawing.Color.Transparent;
             this.pb_player1_deck.Image = global::zucchini_client.Properties.Resources.achterkantkaart;
-            this.pb_player1_deck.Location = new System.Drawing.Point(500, 450);
-            this.pb_player1_deck.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_player1_deck.Location = new System.Drawing.Point(667, 554);
+            this.pb_player1_deck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_player1_deck.Name = "pb_player1_deck";
-            this.pb_player1_deck.Size = new System.Drawing.Size(100, 146);
+            this.pb_player1_deck.Size = new System.Drawing.Size(133, 180);
             this.pb_player1_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_player1_deck.TabIndex = 3;
             this.pb_player1_deck.TabStop = false;
@@ -230,10 +223,10 @@
             // 
             this.pb_player2_deck.BackColor = System.Drawing.Color.Transparent;
             this.pb_player2_deck.Image = global::zucchini_client.Properties.Resources.achterkantkaart;
-            this.pb_player2_deck.Location = new System.Drawing.Point(11, 496);
-            this.pb_player2_deck.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_player2_deck.Location = new System.Drawing.Point(15, 610);
+            this.pb_player2_deck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_player2_deck.Name = "pb_player2_deck";
-            this.pb_player2_deck.Size = new System.Drawing.Size(146, 100);
+            this.pb_player2_deck.Size = new System.Drawing.Size(195, 123);
             this.pb_player2_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_player2_deck.TabIndex = 2;
             this.pb_player2_deck.TabStop = false;
@@ -243,10 +236,10 @@
             // 
             this.pb_player4_deck.BackColor = System.Drawing.Color.Transparent;
             this.pb_player4_deck.Image = global::zucchini_client.Properties.Resources.achterkantkaart;
-            this.pb_player4_deck.Location = new System.Drawing.Point(465, 10);
-            this.pb_player4_deck.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_player4_deck.Location = new System.Drawing.Point(620, 12);
+            this.pb_player4_deck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_player4_deck.Name = "pb_player4_deck";
-            this.pb_player4_deck.Size = new System.Drawing.Size(146, 100);
+            this.pb_player4_deck.Size = new System.Drawing.Size(195, 123);
             this.pb_player4_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_player4_deck.TabIndex = 1;
             this.pb_player4_deck.TabStop = false;
@@ -256,10 +249,10 @@
             // 
             this.pb_player3_deck.BackColor = System.Drawing.Color.Transparent;
             this.pb_player3_deck.Image = global::zucchini_client.Properties.Resources.achterkantkaart;
-            this.pb_player3_deck.Location = new System.Drawing.Point(24, 10);
-            this.pb_player3_deck.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_player3_deck.Location = new System.Drawing.Point(32, 12);
+            this.pb_player3_deck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_player3_deck.Name = "pb_player3_deck";
-            this.pb_player3_deck.Size = new System.Drawing.Size(100, 146);
+            this.pb_player3_deck.Size = new System.Drawing.Size(133, 180);
             this.pb_player3_deck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_player3_deck.TabIndex = 0;
             this.pb_player3_deck.TabStop = false;
@@ -269,20 +262,21 @@
             // 
             this.lb_note.BackColor = System.Drawing.Color.Transparent;
             this.lb_note.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_note.Location = new System.Drawing.Point(129, 10);
+            this.lb_note.Location = new System.Drawing.Point(172, 12);
+            this.lb_note.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_note.Name = "lb_note";
-            this.lb_note.Size = new System.Drawing.Size(331, 23);
+            this.lb_note.Size = new System.Drawing.Size(441, 28);
             this.lb_note.TabIndex = 14;
             this.lb_note.Text = "Nothing";
             this.lb_note.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.BackgroundImage = global::zucchini_client.Properties.Resources.Knipsel;
-            this.ClientSize = new System.Drawing.Size(630, 607);
+            this.ClientSize = new System.Drawing.Size(840, 747);
             this.Controls.Add(this.lb_note);
             this.Controls.Add(this.lb_player3_cards);
             this.Controls.Add(this.lb_player4_cards);
@@ -302,6 +296,8 @@
             this.Controls.Add(this.pb_player4_deck);
             this.Controls.Add(this.pb_player3_deck);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameForm";
