@@ -122,7 +122,14 @@ namespace zucchini_server.Network
 
         public void OnWin(Game game, Player player)
         {
-            throw new NotImplementedException();
+            var send = new JObject{
+                                    {"id","game/win"},
+                                    {"data" , new JObject{
+                                        {"playerUuid", player.Uuid }
+                                    }}
+                                };
+            Games.Remove(game);
+            player.Send(send);
         }
 
         public void OnCard(Game game, Vegetable vegetable, int amount, Player player)

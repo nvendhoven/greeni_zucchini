@@ -22,8 +22,9 @@ namespace zucchini_client
 
         private List<Player> _players;
 
-        const int BEGINCARDS = 50;
+        const int BEGINCARDS = 30;
         private int[] _score = { BEGINCARDS, BEGINCARDS, BEGINCARDS, BEGINCARDS };
+        private bool[] _active = { false, false, false, false };
         private int _numberOfCardsPlayedInCurrentRound = 0;
 
         public GameForm(string uuid, List<Player> players, Lobby menu)
@@ -89,17 +90,19 @@ namespace zucchini_client
                     if (i == 0)
                     {
                         lb_player1_name.Text = _players.ElementAt(i).Name;
+                        _active[0] = true;
                     }
                     else if (i == 1)
                     {
                         lb_player2_name.Text = _players.ElementAt(i).Name;
+                        _active[1] = true;
                     }
                     else if (i == 2)
                     {
                         lb_player3_cards.Visible = true;
                         lb_player3_name.Visible = true;
                         pb_player3_deck.Visible = true;
-
+                        _active[2] = true;
 
                         lb_player3_name.Text = _players.ElementAt(i).Name;
                     }
@@ -108,12 +111,13 @@ namespace zucchini_client
                         lb_player4_cards.Visible = true;
                         lb_player4_name.Visible = true;
                         pb_player4_deck.Visible = true;
+                        _active[3] = true;
 
                         lb_player4_name.Text = _players.ElementAt(i).Name;
                     }
                 }
             }));
-        } // TODO: check if player still active
+        }
 
         private void NewRound()
         {
@@ -288,19 +292,94 @@ namespace zucchini_client
                             }
                             else {
                                 ShowNote($"{p.Name} pressed incorrectly!");
-                                // TODO give cards to other
+                                GiveToOther(p);
                             }
                             return;
                         }
                     }
                     break;
                 case "game/leave":
-
+                    foreach (Player p in _players)
+                    {
+                        if (p.Uuid == $"{load.data.playerUuid}")
+                        {
+                            PlayerLeave(p);
+                            return;
+                        }
+                    }
+                    break;
+                case "game/win":
+                    MessageBox.Show($"You won!");
+                    _menu.LeaveGame();
                     break;
             }
         }
 
-        private void AddScore(int amount, Player player) {
+        private void PlayerLeave(Player player) {
+            this.Invoke(new MethodInvoker(() =>
+            {
+                if (_players.IndexOf(player) == 0)
+                {
+                    _active[0] = false;
+                    _score[0] = -1;
+                    pb_player1_deck.Visible = false;
+                    lb_player1_cards.Visible = false;
+                    lb_player1_name.Visible = false;
+                    pb_player1_currentcard.Visible = false;
+                }
+                else if (_players.IndexOf(player) == 1)
+                {
+                    _active[1] = false;
+                    _score[1] = -1;
+                    pb_player2_deck.Visible = false;
+                    lb_player2_cards.Visible = false;
+                    lb_player2_name.Visible = false;
+                    pb_player2_currentcard.Visible = false;
+                }
+                else if (_players.IndexOf(player) == 2)
+                {
+                    _active[2] = false;
+                    _score[2] = -1;
+                    pb_player3_deck.Visible = false;
+                    lb_player3_cards.Visible = false;
+                    lb_player3_name.Visible = false;
+                    pb_player3_currentcard.Visible = false;
+                }
+                else if (_players.IndexOf(player) == 3)
+                {
+                    _active[3] = false;
+                    _score[3] = -1;
+                    pb_player4_deck.Visible = false;
+                    lb_player4_cards.Visible = false;
+                    lb_player4_name.Visible = false;
+                    pb_player4_currentcard.Visible = false;
+                }
+            }));
+        }
+
+        private void GiveToOther(Player player) {
+            var amountToLose = 0;
+            int index = 0;
+            foreach (Player p in _players)
+            {
+                if (player != p && _active[index])
+                {
+                    AddScore(1, p);
+                    amountToLose++;
+                }
+                index++;
+            }
+            foreach (Player p in _players)
+            {
+                if (player == p)
+                {
+                    AddScore(-amountToLose, p);
+                }
+            }
+        }
+
+        private void AddScore(int amount, Player player)
+        {
             this.Invoke(new MethodInvoker(() =>
             {
                 if (_players.IndexOf(player) == 0)
@@ -321,12 +400,35 @@ namespace zucchini_client
                 }
 
                 lb_player1_cards.Text = _score[0].ToString();
+
+                if (_score[0] < 0)
+                    lb_player1_cards.ForeColor = Color.Red;
+                else
+                    lb_player1_cards.ForeColor = Color.White;
+
                 lb_player2_cards.Text = _score[1].ToString();
+
+                if (_score[1] < 0)
+                    lb_player2_cards.ForeColor = Color.Red;
+                else
+                    lb_player2_cards.ForeColor = Color.White;
+
                 lb_player3_cards.Text = _score[2].ToString();
+
+                if (_score[2] < 0)
+                    lb_player3_cards.ForeColor = Color.Red;
+                else
+                    lb_player3_cards.ForeColor = Color.White;
+
                 lb_player4_cards.Text = _score[3].ToString();
+
+                if (_score[3] < 0)
+                    lb_player4_cards.ForeColor = Color.Red;
+                else
+                    lb_player4_cards.ForeColor = Color.White;
             }));
         }
-    
+
 
         private void ShowNote(string text) {
             new Thread(() => {
@@ -339,10 +441,6 @@ namespace zucchini_client
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _menu.LeaveGame();
-
-            Hide();
-            _menu.Game = null;
-            _menu.Show();
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)

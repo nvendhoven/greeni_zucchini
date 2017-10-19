@@ -13,6 +13,7 @@ namespace zucchini_server.Controller
         public string Uuid { get; set; }
         public List<Player> Players { get; set; }
         public bool InProgress { get; set; }
+        public Room Room { get; set; }
 
         private IGameListener _listener;
         private Player _turnPlayer;
@@ -20,12 +21,13 @@ namespace zucchini_server.Controller
         private Tuple<string, int>[] _currentCards;
         private bool bufferDone = true;
 
-        public Game(IGameListener listener, List<Player> players)
+        public Game(IGameListener listener, List<Player> players, Room room)
         {
             _listener = listener;
             Uuid = Guid.NewGuid().ToString();
             Players = players;
             _turnPlayer = players.First();
+            Room = room;
 
             _currentCards = new Tuple<string, int>[4] {
                 Tuple.Create<string, int>("ZUCCHINI", 0),
@@ -48,8 +50,17 @@ namespace zucchini_server.Controller
 
         public void PlayerLeave(Player player) {
             _listener.OnPlayerLeave(this, player);
+            _currentCards[Players.IndexOf(player)] = Tuple.Create<string, int>("ZUCCHINI", 0);
+            RunBuffer();
+
             player.InGame = false;
             Players.Remove(player);
+
+            if (Players.Count == 1) {
+                _listener.OnWin(this, Players.First());
+                Room.InGame = false;
+                Stop();
+            }
         }
 
         private void Run() {
@@ -61,17 +72,22 @@ namespace zucchini_server.Controller
                     if (bufferDone)
                     {
                         CardGenerator.Generate(out Vegetable vegetable, out int amount);
-                        _currentCards[Players.IndexOf(_turnPlayer)] = Tuple.Create<string, int>(vegetable.ToString(), amount);
-                        _listener.OnCard(this, vegetable, amount, _turnPlayer);
 
-
-                        if (Players.IndexOf(_turnPlayer) + 1 < Players.Count)
+                        try
                         {
-                            _turnPlayer = Players.ElementAt(Players.IndexOf(_turnPlayer) + 1);
+                            _currentCards[Players.IndexOf(_turnPlayer)] = Tuple.Create<string, int>(vegetable.ToString(), amount);
+                            _listener.OnCard(this, vegetable, amount, _turnPlayer);
+                            if (Players.IndexOf(_turnPlayer) + 1 < Players.Count)
+                            {
+                                _turnPlayer = Players.ElementAt(Players.IndexOf(_turnPlayer) + 1);
+                            }
+                            else
+                            {
+                                _turnPlayer = Players.First();
+                            }
                         }
-                        else
-                        {
-                            _turnPlayer = Players.First();
+                        catch (Exception e) {
+                            Program.Print(PrintType.ERR, $"error in game from room {Room.Name} - {e.StackTrace}");
                         }
                     }
                 }

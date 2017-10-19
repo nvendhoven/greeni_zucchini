@@ -164,6 +164,12 @@ namespace zucchini_client
 
         private void btn_join_Click(object sender, EventArgs e)
         {
+
+            if (_currentRoom != null) {
+                MessageBox.Show($"You are already in a room");
+                return;
+            }
+
             try
             {
                 if (lb_rooms.SelectedIndex >= 0 && lb_rooms.SelectedIndex < _rooms.Count)
@@ -304,6 +310,12 @@ namespace zucchini_client
 
         public void LeaveGame() {
             _api.LeaveGame(Game.Uuid, _self);
+
+            if (_currentRoom != null)
+                _api.LeaveRoom(_currentRoom.Uuid, _self);
+
+            Thread.Sleep(1000);
+            Environment.Exit(0);
         }
 
         public void Bell() {

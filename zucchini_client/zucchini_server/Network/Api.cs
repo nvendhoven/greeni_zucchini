@@ -60,7 +60,7 @@ namespace zucchini_server.Network
                 {
                     r.InGame = true;
 
-                    var game = new Game(Server.Get(), r.Players);
+                    var game = new Game(Server.Get(), r.Players, r);
 
                     var send = new JObject{
                                     {"id","room/start"},
