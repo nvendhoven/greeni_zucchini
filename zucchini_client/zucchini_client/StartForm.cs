@@ -42,21 +42,13 @@ namespace zucchini_client
             throw new Exception("Local IP Address Not Found!");
         }
 
-        private void tb_ip_Click(object sender, EventArgs e)
-        {
-            tb_ip.Clear();
-        }
-
-        private void tb_username_Click(object sender, EventArgs e)
-        {
-            tb_username.Clear();
-        }
+       
 
         private void btn_connect_Click(object sender, EventArgs e)
         {
             try
             {
-                if (tb_username.Text.Length > 3)
+                if (tb_username.Text.Length > 1)
                 {
                     var lobby = new Lobby(IPAddress.Parse(tb_ip.Text), tb_username.Text);
                     Thread.Sleep(1000);
